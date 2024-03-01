@@ -1,0 +1,148 @@
+.allmember-container{
+    width:100%;
+    height:100%;
+   display: flex;
+   flex-direction: column;
+   gap:10px
+}
+
+
+.allmember-header{
+    width:100%;
+    height:40px;
+    background-color: fdfdf7;
+    display: flex;
+    gap:5px;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.allmember-line{
+     width:100%;
+    height:2px;
+    background-color: black;
+}
+
+.shape-div{
+    width:10px;
+    height:10px;
+
+}
+
+.shape{
+    width:100%;
+    height:100%;
+    object-fit: contain;
+}
+
+.word{
+    font-size: 11px;
+    margin-top: 10px;
+    font-weight: 600;
+}
+
+.allmember-person{
+    width:100%;
+    height:90%;
+   display: flex;
+   flex-direction: column;
+   gap:5px;
+   overflow:scroll;
+}
+
+.a-user{
+    width:97%;
+    height:30px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.361);
+    display: flex;
+    align-items: center;
+    gap:5px;
+    margin-left: 10px;
+    margin-bottom: 10px;
+}
+
+
+
+.a-user-index{
+     font-size: 11px;
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+    width:60px;
+    justify-content: center;
+    margin-bottom: 5px;
+
+   
+}
+
+.a-user-name{
+     font-size: 11px;
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+    width:220px;
+    justify-content: center;
+     margin-bottom: 5px;
+   
+}
+
+
+.a-user-id{
+     font-size: 11px;
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+    width:140px;
+    justify-content: center;
+     margin-bottom: 5px;
+   
+}
+
+.a-user-status{
+     font-size: 11px;
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+    width:180px;
+    justify-content: center;
+     margin-bottom: 5px;
+   
+}
+
+.a-user-status{
+     font-size: 11px;
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+    width:180px;
+    justify-content: center;
+     margin-bottom: 5px;
+   
+}
+
+.a-user-plan{
+     font-size: 11px;
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+    width:120px;
+    justify-content: center;
+     margin-bottom: 5px;
+   
+}
+
+.del-div{
+    width:100px;
+    height:20px;
+
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    cursor: pointer;
+}
+
+.del{
+    width:60%;
+    height:60%;
+    object-fit: contain;
+}

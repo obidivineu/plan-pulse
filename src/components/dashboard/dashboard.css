@@ -1,0 +1,19 @@
+.dashboard-container{
+    width:100%;
+    height:100%;
+    display: flex;
+    flex-direction: column;
+    background-color: #E6E6E6;
+}
+
+.dashboard-content{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.btn-dash{
+    margin-left: 720px;
+    cursor: pointer;
+}
+

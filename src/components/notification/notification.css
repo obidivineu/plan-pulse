@@ -1,0 +1,37 @@
+.noti-div{
+    width:90%;
+    height:100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    cursor: pointer;
+
+     
+}
+
+.noti-text-div{
+    position: absolute;
+    border: 1px solid gray;
+    border-radius: 100%;
+    width:35%;
+    height:50%;
+    top:11px;
+    left:25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.noti-img-div{
+    margin-top: 20px;
+    width:70%;
+    height:50%;
+    
+}
+
+.noti-img{
+    width:100%;
+    height:100%;
+    object-fit: contain;
+}

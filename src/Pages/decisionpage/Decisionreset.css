@@ -1,0 +1,104 @@
+.wrapper{
+    width: 100vw;
+    height: 100vh;
+    background-color:  #dcd3d3ad;
+    display: flex;
+    /* justify-content: center; */
+    align-items: center;
+    flex-direction: column;
+}
+
+.centercard{
+    width: 57%;
+    height: 65%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* text-align: center; */
+    background-color:  #dcd3d398;
+    border-radius: 7px; 
+     box-shadow: 10px 5px 15px 3px rgb(196, 190, 190);
+     flex-direction: column;
+
+}
+.upping{
+    width: 100vw;
+    height: 20%;
+    /* background-color: plum; */
+    display: flex;
+    align-items: center;
+}
+.decisionmodal{
+    width: 80%;
+    height: 65%;
+    background-color: #f9eff0;
+    /* border-radius: 5px; */
+    box-shadow: 10px 5px 15px 3px rgb(196, 190, 190);;
+}
+.okay{
+    width: 40%;
+    height: 45%;
+    background-color: #ce8083;
+    border: none;
+    border-radius: 3px;
+    color: #fdfdfd;
+    box-shadow: 3px 3px 15px 5px rgb(201, 195, 195);
+
+}.backward{
+    width: 13%;
+    height: 35%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #ce8083 ;
+    border: none;
+    border-radius: 3px;
+    box-shadow: 3px 3px 15px 5px rgb(201, 195, 195);
+
+}
+.above{
+    width: 100%;
+    height: 50%;
+    /* background-color:  pink; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    flex-direction: row;
+}
+.reset{
+    width: 100%;
+    height: 50%;
+    /* background-color:  rgb(192, 206, 255); */
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+
+
+}
+.resetting{
+    /* background-color: hotpink; */
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-weight:  450;
+    font-size: 20px;
+    color: #FF595E;
+}
+.yh{
+   width: 20%;
+   height: 25%;
+   background-color: #FF595E;
+   border: none;
+   border-radius: 3px;
+   color: #fdfdfd;
+   box-shadow: 3px 7px 7px 3px rgb(227, 225, 225);
+
+}
+.nah{
+    width: 20%;
+    height: 25%;
+    background-color: #FF595E;
+    border: none;
+    border-radius: 3px;
+    color: #fdfdfd;  
+    box-shadow:  3px 7px 7px 3px rgb(227, 225, 225);
+}
