@@ -40,7 +40,6 @@
     flex-direction: column;
     justify-content: center;
     font-family: Roboto, sans serif;
-   
 }
 
 .textsign {
@@ -48,7 +47,6 @@
     justify-content: center;
     /* font-family: ;   */
     margin-top: 10px;
-    font-family: Roboto, sans serif;
     font-size: 13px;
   
 }
