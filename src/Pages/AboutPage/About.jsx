@@ -1,8 +1,7 @@
 import React from 'react';
 import Header from '../landing-page/Header/Header';
-import Agent from "../../assets/gympersonel.webp";
-import Personal from "../../assets/gymgirl.webp"
-import "./Aboutpage.css"
+// import "./Aboutpage.css"
+import './About.css'
 const Aboutpage = () => {
   return (
     <div
@@ -22,10 +21,10 @@ const Aboutpage = () => {
         </div>
         <div className='aboutright'>
           <div className='upimage'>
-            <img src={Agent} style={{ width: "60%", }} />
+            <img src={"Agent"} style={{ width: "60%", }} />
           </div>
           <div className='downimage'>
-            <img src={Personal} style={{ width: "40%", }} />
+            <img src={"Personal"} style={{ width: "40%", }} />
           </div>
         </div>
       </div>
