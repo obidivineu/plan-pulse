@@ -7,6 +7,10 @@ import { useNavigate } from 'react-router-dom';
 const Header = () => {
   const nav = useNavigate()
 
+  const navToSignUp = () =>{
+    nav("/about-page")
+  }
+
 
   return (
 
@@ -16,7 +20,7 @@ const Header = () => {
       </div>
       <div className="headertext">
         <p className="home"  style={{ fontSize: "15px"}}>HOME</p>
-        <p className="home"  style={{ fontSize: "15px"}}>ABOUT</p>
+        <p className="home"  style={{ fontSize: "15px"}}   onClick={navToSignUp} >ABOUT</p>
         <p className="home"  style={{ fontSize: "15px"}}>FEATURES</p>
         <p className="home"  style={{ fontSize: "15px"}}>PRICING</p>
         <p className="home"  style={{ fontSize: "15px"}}>SERVICE</p>

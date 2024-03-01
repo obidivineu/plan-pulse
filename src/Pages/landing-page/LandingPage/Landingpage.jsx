@@ -1,9 +1,14 @@
-
+import React from 'react';
 import "./landingpage.css";
-
-
+import { useNavigate } from 'react-router-dom';
 import fitness from "../../../assets/fitness.png"
 const Landingpage = () => {
+  
+  const nav = useNavigate()
+
+  const navToSignUp = () =>{
+    nav("/user-signup")
+  }
   return <div
     style={{ overflow: "hidden" }}
   >
@@ -24,7 +29,7 @@ const Landingpage = () => {
             find this product very friendly.</p>
         </div>
         <div className="below">
-        <button className="starting">GET STARTED</button>
+        <button className="starting"  onClick={navToSignUp} >GET STARTED</button>
         </div>
       </div>
     </div>

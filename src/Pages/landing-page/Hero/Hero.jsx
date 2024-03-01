@@ -1,10 +1,16 @@
 import React from 'react';
 import hero from "../../../assets/database.svg"
 import "./Hero.css"
+import { useNavigate } from 'react-router-dom';
 
 
 const Hero = () => {
 
+  const nav = useNavigate()
+
+  const navToSignUp = () =>{
+    nav("/user-signup")
+  }
 
   return (
 
@@ -21,6 +27,7 @@ const Hero = () => {
           <button className="starting" style={{
             fontSize: "15px",
           }}
+          onClick={navToSignUp}
           >GET STARTED</button>
           <button className="upgrading"  style={{
             fontSize: "15px",
