@@ -7,12 +7,12 @@ import "./homescreen.css"
 const HomeScreen = () => {
   return (
     <>
-    <div className='overall'>
-      <Header/>
-      <Hero/>
-      <Feature/>
-      <Landingpage/>
-    </div>
+      <div className='overall'>
+        <Header />
+        <Hero />
+        <Feature />
+        <Landingpage />
+      </div>
     </>
   );
 }

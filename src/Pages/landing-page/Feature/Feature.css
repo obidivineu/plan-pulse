@@ -18,7 +18,13 @@
     align-items: center;
     font-size: 10px;
 }
-
+.plantracks{
+    font-size: 18px;
+text-align: center;
+}
+.unique-features{
+    font-size: 40px;
+}
 .featuring {
     width: 90vw;
     height: 80vh;

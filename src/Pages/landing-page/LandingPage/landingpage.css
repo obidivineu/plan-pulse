@@ -1,5 +1,3 @@
-
-
 .circles {
     width: 50%;
     height: 15vh;
@@ -65,8 +63,10 @@
     height: 100%;
     /* background-color: rgb(118, 160, 95);  */
 }
-.online{
-    font-size:20px;
+
+.online {
+    font-size: 50px;
+    text-align: center;
 }
 
 .up {
@@ -81,14 +81,14 @@
 .center {
     width: 100%;
     height: 30%;
-    /* background-color: #fff; */
+    /* background-color: red; */
     display: flex;
     justify-content: center;
     /* align-items: center; */
     text-align: center;
-    font-size: 13px;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-    font-size: 10px;
+    font-size: 20px;
+    
+   
 }
 
 .below {
@@ -99,11 +99,16 @@
     justify-content: center;
     align-items: center;
 }
-.starting{
-    width: 75px;
-    height: 30px;
-    font-size: 8px;
-    box-shadow: 3px 7px 7px 3px rgb(239, 239, 239);
+
+.getstated {
+    width: 20%;
+    height: 40px;
+    font-size: 15px;
+    color: white;
+    border: none;
+    outline: none;
+    border-radius: 5px;
+    background-color: #ff595e;
 }
 
 .offer {
@@ -119,6 +124,10 @@
     font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
+.our-offer {
+    font-size: 50px;
+}
+
 .ouroffer {
     width: 100vw;
     height: 15%;
@@ -127,7 +136,7 @@
 }
 
 .choose {
-    font-size: 10px;
+    font-size: 20px;
 }
 
 .version {
@@ -147,13 +156,17 @@
     align-items: center;
 }
 
+.Freeveersion {
+    font-size: 30px;
+}
+
 .freeversion {
     width: 25vw;
     height: 55vh;
     background-color: #fdfdfd;
     border-radius: 5px;
     box-shadow: 3px 7px 10px 5px rgb(218, 214, 214);
-    
+
 }
 
 .versionb {
@@ -189,23 +202,38 @@
 
 }
 
-.Freeversion {
-    font-size: 15x;
+.naira {
+    font-size: 40px;
+    margin-top: 10px;
 }
 
-.naira {
-    font-size: 30px;
+.ouroffertext {
+    font-size: 15px;
 }
 
 .bottomversion {
     width: 100%;
     height: 70%;
+    gap: 30px;
     /* background-color: red; */
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
     gap: 5px
+}
+
+.set {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.plantrack {
+    /* font-size: 100px; */
+    margin-top: 20px;
+    text-align: center;
 }
 
 .dot {
@@ -220,12 +248,13 @@
 .group {
     width: 100%;
     height: 15%;
-    background-color:  #EED8D9;
+    background-color: #EED8D9;
     display: flex;
+    text-align: center;
     justify-content: center;
     align-items: center;
-    font-size: 10px;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 20px;
+    /* font-family: Verdana, Geneva, Tahoma, sans-serif; */
 }
 
 .accessbtn {
@@ -236,23 +265,34 @@
     justify-content: center;
     align-items: center;
 }
+
 .paying {
-    width: 75%;
-    height: 60%;
-    background-color:  #ff595e;
+    width: 90%;
+    height: 40px;
+    background-color: #ff595e;
     border: none;
+    font-size: 20px;
+    /* padding: 10px; */
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     color: #fdfdfd;
-    border-radius: 3px;
-    box-shadow: 3px 7px 7px 3px rgb(248, 246, 246);
+    border-radius: 5px;
+    /* box-shadow: 3px 7px 7px 3px rgb(248, 246, 246); */
     cursor: pointer;
-    font-size: 10px;
-
-
 }
+
 .service {
     width: 100vw;
     height: 100vh;
     /* background-color: palevioletred; */
+}
+
+.round {
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .topservice {
@@ -285,6 +325,11 @@
     /* border: 5px solid #f5f5f5; */
     /* border-radius: 5px; */
     box-shadow: 0px 0px 10px lightgray;
+}
+
+.our-service {
+    font-size: 50px;
+    margin-bottom: 20px;
 }
 
 .middlecard {
@@ -322,7 +367,8 @@
     /* background-color: #b14d4d; */
     display: flex;
 }
-.firstfooter{
+
+.firstfooter {
     height: 100%;
     width: 50%;
     /* background-color: goldenrod; */
@@ -330,7 +376,8 @@
     align-items: center;
     justify-content: center;
 }
-.secondfooter{
+
+.secondfooter {
     height: 100%;
     width: 50%;
     background-color: grey;
@@ -338,11 +385,13 @@
     align-items: center;
     justify-content: center;
 }
-.map{
+
+.map {
     height: 100%;
     width: 100%;
 }
-.textwriteup{
+
+.textwriteup {
     height: 60%;
     width: 60%;
     /* background-color: tomato; */
@@ -350,19 +399,22 @@
     flex-direction: column;
     /* gap: 5px; */
 }
-.textinner{
+
+.textinner {
     padding-left: 10%;
     padding-top: 30px;
     /* background-color: orange; */
     font-size: 11px;
 }
-.mapping{
+
+.mapping {
     height: 80%;
     width: 55%;
 }
-.ending{
+
+.ending {
     width: 100%;
-    height:  20%;
+    height: 20%;
     background-color: #fdfdf7;
     display: flex;
     justify-content: center;

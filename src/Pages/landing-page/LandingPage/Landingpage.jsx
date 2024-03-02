@@ -2,6 +2,10 @@ import React from 'react';
 import "./landingpage.css";
 import { useNavigate } from 'react-router-dom';
 import fitness from "../../../assets/fitness.png"
+import { MdGroup } from "react-icons/md";
+import { FaRecycle } from "react-icons/fa6";
+import { MdOutlineModelTraining } from "react-icons/md";
+
 const Landingpage = () => {
   
   const nav = useNavigate()
@@ -18,8 +22,7 @@ const Landingpage = () => {
       </div>
       <div className="writeup">
         <div className="up">
-          <h1 className="online">Keep  Track Of  Your
-            Clients  Online</h1>
+          <h1 className="online">Keep  Track Of  Your Clients  Online</h1>
         </div>
         <div className="center">
           <p>We are your reliable manager that is always <br />
@@ -29,30 +32,30 @@ const Landingpage = () => {
             find this product very friendly.</p>
         </div>
         <div className="below">
-        <button className="starting"  onClick={navToSignUp} >GET STARTED</button>
+        <button className="getstated"  onClick={navToSignUp} >GET STARTED</button>
         </div>
       </div>
     </div>
     <div className="offer">
-      <div className="ouroffer"> <h1> Our Offer</h1> <br /><p className="choose">Choose any of our offer to enjoy Plan Pulse</p></div>
+      <div className="ouroffer"> <h1 className='our-offer'> Our Offer</h1> <br /><p className="choose">Choose any of our offer to enjoy Plan Pulse</p></div>
       <div className="version">
         <div className="versiona">
           <div className="freeversion">
             <div className="topversion">
-              <h3 className="Freeversion">Free version</h3><span className="naira">₦0</span>
+              <h3 className="Freeveersion">Free version</h3><span className="naira">₦0</span>
             </div>
             <div className="bottomversion">
               <div className="group">
                 <div className="dot"></div>
-                <p>limited Database Storage</p>
+                <p className="ouroffertext">limited Database Storage</p>
               </div>
               <div className="group">
                 <div className="dot"></div>
-                <p>No access to search CTA</p>
+                <p className="ouroffertext">No access to search CTA</p>
               </div>
               <div className="group">
                 <div className="dot"></div>
-                <p>7 Days Trial (new client)</p>
+                <p className="ouroffertext">7 Days Trial (new client)</p>
               </div>
             </div>
           </div>
@@ -60,16 +63,16 @@ const Landingpage = () => {
         <div className="versionb">
           <div className="payedversion">
             <div className="topversion">
-              <h3 className="Freeversion">Payed Version</h3><span className="naira">₦50,000</span>
+              <h3 className="Freeveersion">Payed Version</h3><span className="naira">₦50,000</span>
             </div>
             <div className="bottomversion">
               <div className="group">
                 <div className="dot"></div>
-                <p>Unlimited Database Storage</p>
+                <p className="ouroffertext">Unlimited Database Storage</p>
               </div>
               <div className="group">
                 <div className="dot"></div>
-                <p>Unlimited  access to  CTA</p>
+                <p className="ouroffertext">Unlimited  access to  CTA</p>
               </div>
               <div className="accessbtn">
                 <button className="paying">PAY</button>
@@ -80,13 +83,13 @@ const Landingpage = () => {
       </div>
     </div>
     <div className="service">
-      <div className="topservice"><h1> Our Service</h1> <br /><p className="choose">We offer more than just the product</p></div>
+      <div className="topservice"><h1 className='our-service'><u>Our Service</u></h1> <p className="choose">We offer more than just the product</p></div>
       <div className="lowservice">
         <div className="carding">
           <div className="leftcard">
             <div className="top">
               <div className="round">
-              <div className="set">📃</div>
+              <MdGroup fontSize="1.5em" />
               </div>
             </div>
             <div className="bottom">
@@ -102,7 +105,7 @@ const Landingpage = () => {
           <div className="middlecard">
             <div className="top">
               <div className="round">
-              <div className="set">⏱</div>
+             <MdOutlineModelTraining  fontSize="1.5em"/>
               </div>
             </div>
             <div className="bottom">
@@ -118,7 +121,7 @@ const Landingpage = () => {
           <div className="rightcard">
             <div className="top">
               <div className="round">
-              <div className="set">👨‍💼</div>
+              <FaRecycle />
               </div>
             </div>
             <div className="bottom">
