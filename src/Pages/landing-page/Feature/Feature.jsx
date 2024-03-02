@@ -7,7 +7,7 @@ import { FaRegPaperPlane } from "react-icons/fa6";
 const Feature = () => {
   return (
     
-       <div className="features">
+       <div className="features" id='FEATURES'>
       <div className="unique">
         <h1 className='unique-features'><u>Unique Features</u></h1>
       </div>  

@@ -13,7 +13,7 @@ import HomeScreen from "../src/Pages/landing-page/HomeScreen/HomeScreen";
 import UserSignup from "../src/Pages/user-signup-page/UserSignup";
 import Userdashboard from "./Pages/user-dashboard/Userdashboard";
 import Resetpasswordform from "./Pages/resetform/Resetpasswordform";
-import Aboutpage from "./Pages/AboutPage/About"
+// import Aboutpage from "./Pages/AboutPage/About"
 const App = () => {
   return (
     <>
@@ -32,7 +32,7 @@ const App = () => {
           <Route path="/success-transfer" element={<Successfultransfer />} />
           <Route path="/user-dashboard" element={<Userdashboard />} />
           <Route path="/reset-form" element={<Resetpasswordform />} />
-          <Route path="/about-page" element={<Aboutpage />} />
+          {/* <Route path="/about-page" element={<Aboutpage />} /> */}
         </Routes>
       </BrowserRouter>
     </>

@@ -10,10 +10,10 @@ import { FaFacebook } from "react-icons/fa";
 import { IoLogoInstagram } from "react-icons/io5";
 
 const Landingpage = () => {
-  
+
   const nav = useNavigate()
 
-  const navToSignUp = () =>{
+  const navToSignUp = () => {
     nav("/user-signup")
   }
   return <div
@@ -25,7 +25,7 @@ const Landingpage = () => {
       </div>
       <div className="writeup">
         <div className="up">
-          <h1 className="online">Keep  Track Of  Your Clients  Online</h1>
+          <h1 className="online" id='FEATURES'>Keep  Track Of  Your Clients  Online</h1>
         </div>
         <div className="center">
           <p>We are your reliable manager that is always <br />
@@ -35,11 +35,11 @@ const Landingpage = () => {
             find this product very friendly.</p>
         </div>
         <div className="below">
-        <button className="getstated"  onClick={navToSignUp} >GET STARTED</button>
+          <button className="getstated" onClick={navToSignUp} >GET STARTED</button>
         </div>
       </div>
     </div>
-    <div className="offer">
+    <div className="offer" id='PRICING'>
       <div className="ouroffer"> <h1 className='our-offer'> Our Offer</h1> <br /><p className="choose">Choose any of our offer to enjoy Plan Pulse</p></div>
       <div className="version">
         <div className="versiona">
@@ -85,14 +85,14 @@ const Landingpage = () => {
         </div>
       </div>
     </div>
-    <div className="service">
+    <div className="service" id='SERVICES'>
       <div className="topservice"><h1 className='our-service'><u>Our Service</u></h1> <p className="choose">We offer more than just the product</p></div>
       <div className="lowservice">
         <div className="carding">
           <div className="leftcard">
             <div className="top">
               <div className="round">
-              <MdGroup fontSize="1.5em" />
+                <MdGroup fontSize="1.5em" />
               </div>
             </div>
             <div className="bottom">
@@ -108,7 +108,7 @@ const Landingpage = () => {
           <div className="middlecard">
             <div className="top">
               <div className="round">
-             <MdOutlineModelTraining  fontSize="1.5em"/>
+                <MdOutlineModelTraining fontSize="1.5em" />
               </div>
             </div>
             <div className="bottom">
@@ -124,7 +124,7 @@ const Landingpage = () => {
           <div className="rightcard">
             <div className="top">
               <div className="round">
-              <FaRecycle />
+                <FaRecycle />
               </div>
             </div>
             <div className="bottom">
@@ -139,48 +139,69 @@ const Landingpage = () => {
         </div>
       </div>
     </div>
-    <div className="footer">
+    <div className='fixwrap' id='ABOUT'>ABOUT PAGE</div>
+    <p className='detail'><u>HOW IT STARTED</u></p>
+    <div className='aboutdiv'>
+      <div className='aboutleft'>
+        <div className='mainwriteup'>OUR GOAL IS TO BE ONE OF THE BEST <br />
+          TRACKING APPLICATION FOR GYM AGENTS
+          </div>
+        <div className='middlewriteup'>We are your reliable manager that is <br />always up to date to help you safe keep and  <br />produce your clients information when  <br />necessary. We have provided all that is <br />needed for you to find this product very friendly.</div>
+        <div className='secondmiddlewriteup'> Our app is designed to streamline your <br />fitness journey, offering powerful tools to track <br />your workouts , monitor progress, and enhance <br />accountability.</div>
+
+      </div>
+      <div className='aboutright'>
+        <div className='upimage'>
+          <img src={"Agent"} style={{ width: "60%", }} />
+        </div>
+        <div className='downimage'>
+          <img src={"Personal"} style={{ width: "40%", }} />
+        </div>
+      </div>
+    </div>
+
+    <div className="footer" id='ABOUT'>
       <div className="all">
 
         <div className="firstfooter">
           <div className="textwriteup">
             <p className="textinners">
-              COMPANY : <span style={{ color : "black", fontSize: "20px" }}> PLAN PULSE</span>
+              COMPANY : <span style={{ color: "black", fontSize: "20px" }}> PLAN PULSE</span>
             </p>
             <p className="textinners">
-              EMAIL : <span style={{ color : "black", fontSize: "20px" }}> Planpulseapp@gmail.com</span>
+              EMAIL : <span style={{ color: "black", fontSize: "20px" }}> Planpulseapp@gmail.com</span>
             </p>
             <p className="textinners">
-              CONTACT : <span style={{ color : "black", fontSize: "20px" }}> +234 813 4565 434</span>
+              CONTACT : <span style={{ color: "black", fontSize: "20px" }}> +234 813 4565 434</span>
             </p>
           </div>
           <div className='socials'>
-          <IoLogoInstagram />
-          <FaSquareXTwitter />
-          <FaFacebook />
+            <IoLogoInstagram />
+            <FaSquareXTwitter />
+            <FaFacebook />
           </div>
         </div>
         <div className="secondfooter">
-{/* <img className="mapping" src={MAP}/> */}
-<iframe
-       src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d991.1462533900512!2d3.3299647695040933!3d6.447291532219994!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x103b897a59a1bbad%3A0x2f3f02b5749fc0c7!2s167%20Muyibi%20St%2C%20Apapa%2C%20Lagos%20102103%2C%20Lagos!5e0!3m2!1sen!2sng!4v1709043668112!5m2!1sen!2sng"
-        width='100%'
-        height='100%'
-        frameBorder='0'
-        style={{ border: 0 }}
-        allowFullScreen
-        title='Google Map'
-        className="map"
-      ></iframe>
+          {/* <img className="mapping" src={MAP}/> */}
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d991.1462533900512!2d3.3299647695040933!3d6.447291532219994!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x103b897a59a1bbad%3A0x2f3f02b5749fc0c7!2s167%20Muyibi%20St%2C%20Apapa%2C%20Lagos%20102103%2C%20Lagos!5e0!3m2!1sen!2sng!4v1709043668112!5m2!1sen!2sng"
+            width='100%'
+            height='100%'
+            frameBorder='0'
+            style={{ border: 0 }}
+            allowFullScreen
+            title='Google Map'
+            className="map"
+          ></iframe>
         </div>
       </div>
-     
+
     </div>
-   
-      <p className="endings">
-        @2024 Plan-Pulse All Copyrights reserved
-      </p>
-    
+
+    <p className="endings">
+      @2024 Plan-Pulse All Copyrights reserved
+    </p>
+
   </div>;
 };
 
