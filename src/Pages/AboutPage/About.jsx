@@ -1,8 +1,11 @@
 import React from 'react';
 import Header from '../landing-page/Header/Header';
-// import "./Aboutpage.css"
 import './About.css'
-const Aboutpage = () => {
+import { FaSquareXTwitter } from "react-icons/fa6";
+import { FaFacebook } from "react-icons/fa";
+import { IoLogoInstagram } from "react-icons/io5";
+
+const About = () => {
   return (
     <div
       style={{ overflow: "hidden" }}
@@ -33,15 +36,20 @@ const Aboutpage = () => {
 
           <div className="firstfooter">
             <div className="textwriteup">
-              <p className="textinner">
+              <p className="textinners">
                 COMPANY : <span style={{ color: "black" }}> PLAN PULSE</span>
               </p>
-              <p className="textinner">
+              <p className="textinners">
                 EMAIL : <span style={{ color: "black" }}> Planpulseapp@gmail.com</span>
               </p>
-              <p className="textinner">
+              <p className="textinners">
                 CONTACT : <span style={{ color: "black" }}> +234 813 4565 434</span>
               </p>
+              <div className='socials'>
+          <IoLogoInstagram />
+          <FaSquareXTwitter />
+          <FaFacebook />
+          </div>
             </div>
           </div>
           <div className="secondfooter">
@@ -60,11 +68,11 @@ const Aboutpage = () => {
         </div>
 
       </div>
-      <p className="ending">
+      <p className="endings">
         @2024 Group-fitness All Copyrights reserved
       </p>
     </div>
   );
 }
 
-export default Aboutpage;
+export default About;
