@@ -5,6 +5,9 @@ import fitness from "../../../assets/fitness.png"
 import { MdGroup } from "react-icons/md";
 import { FaRecycle } from "react-icons/fa6";
 import { MdOutlineModelTraining } from "react-icons/md";
+import { FaSquareXTwitter } from "react-icons/fa6";
+import { FaFacebook } from "react-icons/fa";
+import { IoLogoInstagram } from "react-icons/io5";
 
 const Landingpage = () => {
   
@@ -141,15 +144,20 @@ const Landingpage = () => {
 
         <div className="firstfooter">
           <div className="textwriteup">
-            <p className="textinner">
-              COMPANY : <span style={{ color : "black" }}> PLAN PULSE</span>
+            <p className="textinners">
+              COMPANY : <span style={{ color : "black", fontSize: "20px" }}> PLAN PULSE</span>
             </p>
-            <p className="textinner">
-              EMAIL : <span style={{ color : "black" }}> Planpulseapp@gmail.com</span>
+            <p className="textinners">
+              EMAIL : <span style={{ color : "black", fontSize: "20px" }}> Planpulseapp@gmail.com</span>
             </p>
-            <p className="textinner">
-              CONTACT : <span style={{ color : "black" }}> +234 813 4565 434</span>
+            <p className="textinners">
+              CONTACT : <span style={{ color : "black", fontSize: "20px" }}> +234 813 4565 434</span>
             </p>
+          </div>
+          <div className='socials'>
+          <IoLogoInstagram />
+          <FaSquareXTwitter />
+          <FaFacebook />
           </div>
         </div>
         <div className="secondfooter">
@@ -169,8 +177,8 @@ const Landingpage = () => {
      
     </div>
    
-      <p className="ending">
-        @2024 Group-fitness All Copyrights reserved
+      <p className="endings">
+        @2024 Plan-Pulse All Copyrights reserved
       </p>
     
   </div>;

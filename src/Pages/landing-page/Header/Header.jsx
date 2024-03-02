@@ -10,6 +10,10 @@ const Header = () => {
   const navToSignUp = () =>{
     nav("/about-page")
   }
+  
+  const navHomeScreen = () =>{
+    nav("/home-screen")
+  }
 
 
   return (
@@ -19,7 +23,7 @@ const Header = () => {
         <img src={logo} alt="logo" />
       </div>
       <div className="headertext">
-        <p className="home"  style={{ fontSize: "15px"}}>HOME</p>
+        <p className="home"  style={{ fontSize: "15px"}} onClick={navHomeScreen}>HOME</p>
         <p className="home"  style={{ fontSize: "15px"}}   onClick={navToSignUp} >ABOUT</p>
         <p className="home"  style={{ fontSize: "15px"}}>FEATURES</p>
         <p className="home"  style={{ fontSize: "15px"}}>PRICING</p>
