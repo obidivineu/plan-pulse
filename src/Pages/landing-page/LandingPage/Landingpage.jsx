@@ -1,5 +1,7 @@
 import React from 'react';
 import "./landingpage.css";
+import Aboutimg from "../../../assets/about1.jpeg"
+import About2 from "../../../assets/about2.jpeg"
 import { useNavigate } from 'react-router-dom';
 import fitness from "../../../assets/fitness.png"
 import { MdGroup } from "react-icons/md";
@@ -21,7 +23,7 @@ const Landingpage = () => {
   >
     <div className="clients">
       <div className="photo">
-        <img src={fitness} alt="fitnesspic" style={{ width: "500px", height: "100%", marginTop: "40px" }} />
+        <img src={fitness} alt="fitnesspic" className='fitnesspic'/>
       </div>
       <div className="writeup">
         <div className="up">
@@ -151,17 +153,14 @@ const Landingpage = () => {
 
       </div>
       <div className='aboutright'>
-        <div className='upimage'>
-          <img src={"Agent"} style={{ width: "60%", }} />
-        </div>
-        <div className='downimage'>
-          <img src={"Personal"} style={{ width: "40%", }} />
-        </div>
+        
+          <img src={Aboutimg} className='aboutimages' />
+       
       </div>
     </div>
 
     <div className="footer" id='ABOUT'>
-      <div className="all">
+      <div className="all" id='ABOUT'>
 
         <div className="firstfooter">
           <div className="textwriteup">
