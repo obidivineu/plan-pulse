@@ -32,7 +32,6 @@ const App = () => {
           <Route path="/success-transfer" element={<Successfultransfer />} />
           <Route path="/user-dashboard" element={<Userdashboard />} />
           <Route path="/reset-form" element={<Resetpasswordform />} />
-          
         </Routes>
       </HashRouter>
     </>

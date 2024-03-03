@@ -1,7 +1,6 @@
 import "./usersignup.css";
 import wallpaper from "../../assets/welcome2.png";
 import logo from "../../assets/image6.png";
-import navi from "../../assets/Vector2.png";
 import * as yup from "yup";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -28,6 +27,7 @@ const schema = yup.object().shape({
 });
 
 const UserSignup = () => {
+
   const navigate = useNavigate();
   const inputRef = useRef(null);
   const [data, setData] = useState({
@@ -101,9 +101,7 @@ const UserSignup = () => {
               <header className="signup-logo-div">
                 <img src={logo} alt="logo" className="signup-logo" />
               </header>
-              <nav className="signup-navigation">
-                <img src={navi} alt="nav" className="signup-nav-img" />
-              </nav>
+             
               <div className="signup-headertext">
                 Please enter your details to signup and be part of our great
                 community
@@ -194,7 +192,7 @@ const UserSignup = () => {
               className={!changeSigninBtn ? "signup-btn" : "signup-btn-true"}
               type="submit"
             >
-              Signup
+              Sign Up
             </button>
             <div className="signup-subtext-down">
               Already have an account ?
