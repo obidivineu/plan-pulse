@@ -46,7 +46,11 @@
     width: 100vw;
     height: 80vh;
     background-color: #fdfdf7;
-    display: flex;
+     display: flex;
+     align-items: center;
+     justify-content: center;
+     margin-top: 90px;
+     flex-direction: row;
 }
 
 .photo {
@@ -67,6 +71,7 @@
 .online {
     font-size: 50px;
     text-align: center;
+
 }
 
 .up {
