@@ -21,7 +21,7 @@ const Landingpage = () => {
   >
     <div className="clients">
       <div className="photo">
-        <img src={fitness} alt="fitnesspic" style={{ width: "350px" }} />
+        <img src={fitness} alt="fitnesspic" style={{ width: "500px", height: "100%", marginTop: "40px" }} />
       </div>
       <div className="writeup">
         <div className="up">

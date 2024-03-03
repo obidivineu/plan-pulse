@@ -23,7 +23,13 @@ const Header = () => {
         <img src={logo} alt="logo" />
       </div>
       <div className="headertext">
-        <p className="home" style={{ fontSize: "15px" }} onClick={navHomeScreen}>HOME
+        <p className="home" style={{ fontSize: "15px" }}> <ScrollLink 
+        activeClass='active-scroll-link'
+        to='HOME'
+        spy={true}
+        smooth={true}
+        offset={-100}
+        duration={500}>HOME</ScrollLink>
         </p>
         <p className="home" style={{ fontSize: "15px" }}>
         <ScrollLink 
