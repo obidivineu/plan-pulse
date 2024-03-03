@@ -14,8 +14,8 @@ const Hero = () => {
 
   return (
 
-    <div className="hero">
-      <div className="herotext">
+    <div className="hero"  id='HOME'>
+      <div className="herotext"  id='HOME'>
         <div className="maintext">
           <h1 className="workout" style={{fontSize: "60px",}}>Workout with <br /><span className="plan">Plan</span></h1>
         </div>
