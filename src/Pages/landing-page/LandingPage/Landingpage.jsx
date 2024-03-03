@@ -1,7 +1,6 @@
 import React from 'react';
 import "./landingpage.css";
 import Aboutimg from "../../../assets/about1.jpeg"
-import About2 from "../../../assets/about2.jpeg"
 import { useNavigate } from 'react-router-dom';
 import fitness from "../../../assets/fitness.png"
 import { MdGroup } from "react-icons/md";
@@ -23,7 +22,7 @@ const Landingpage = () => {
   >
     <div className="clients">
       <div className="photo">
-        <img src={fitness} alt="fitnesspic" className='fitnesspic'/>
+      <img src={fitness} className='fitnesspics'/>
       </div>
       <div className="writeup">
         <div className="up">
