@@ -1,5 +1,5 @@
 import "./App.css";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, HashRouter, Route, Routes } from "react-router-dom";
 import UserLogin from "../src/Pages/user-login-page/UserLogin";
 import ForgotPassword from "../src/Pages/forgot-password-page/ForgotPassword";
 import EmailValidation from "../src/Pages/emailvalidation/EmailValidation";
@@ -17,7 +17,7 @@ import Resetpasswordform from "./Pages/resetform/Resetpasswordform";
 const App = () => {
   return (
     <>
-      <BrowserRouter>
+      <HashRouter>
         <Routes>
           <Route path="/" element={<Landingpage />} />
           <Route path="/user-login" element={<UserLogin />} />
@@ -34,7 +34,7 @@ const App = () => {
           <Route path="/reset-form" element={<Resetpasswordform />} />
           
         </Routes>
-      </BrowserRouter>
+      </HashRouter>
     </>
   );
 };
