@@ -513,19 +513,23 @@ margin-top: 20px;
 
 .aboutright {
     width: 50%;
-    height: 60%;
+    height: 90%;
     /* background-color: yellow; */
     /* gap: 40%; */
 
 }
+.fitnesspic{
+    width: "500px";
+    height: "100%";
+    margin-top: "40px";
+}
+.aboutimages{
+   width: 70%;
+   height: 100%;
 
-.upimage {
-    /* background-color: #fff; */
-    /* height: 50%; */
-    display: flex;
-    justify-content: center;
 
 }
+
 
 .downimage {
     height: 70%;
