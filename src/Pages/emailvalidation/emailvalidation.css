@@ -77,3 +77,44 @@
     font-size: 13px;
     font-weight: 600;
 }
+
+.verified{
+    width:30%;
+    height:10%;
+    background-color:#FF595E ;
+    border: 1px;
+    margin-top: 2%;
+    border-radius: 2px;
+    color:#fdfdf7;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+     transform: scale(1);
+}
+
+.verified:hover{
+    width:30%;
+    height:10%;
+    background-color:#FF595E ;
+    border: 1px;
+    margin-top: 2%;
+    border-radius: 2px;
+    color:#fdfdf7;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    transform: scale(1.1);
+}
+
+.verified-true{
+    width:30%;
+    height:10%;
+    background-color:whitesmoke ;
+    border: 1px;
+    margin-top: 2%;
+    border-radius: 2px;
+    color:#FF595E;
+    font-size: 14px;
+    font-weight: bold; 
+    cursor: pointer;
+}

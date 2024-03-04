@@ -43,6 +43,7 @@ const UserSignup = () => {
 
   const handleBack = () => {
     setGoBack(true);
+    navigate("/");
   };
 
   useEffect(() => {

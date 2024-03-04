@@ -1,19 +1,25 @@
 import "../emailvalidation/emailvalidation.css";
 import EMAIL from "../../assets/omailR1.png";
 import LOG from "../../assets/image6.png";
-import { useContext } from "react";
+import { useContext, useState, useEffect } from "react";
 import { AppContext } from "../../context";
-import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const EmailValidation = () => {
-  const { emailStore, userId } = useContext(AppContext);
+  const { emailStore } = useContext(AppContext);
+  const [loginBtn, setLoginBtn] = useState(false);
+  const navigate = useNavigate();
 
-  const handleEmailVerify = async () => {
-    const response = await axios.get(
-      `https://planpulse.onrender.com/api/v1/verifyEmail/${userId}`
-    );
-    console.log(response.data);
+  const handleEmailVerify = () => {
+    setLoginBtn(true);
+    navigate("/user-login");
   };
+
+  useEffect(() => {
+    setTimeout(() => {
+      setLoginBtn(false);
+    }, 1000);
+  }, [setLoginBtn]);
   return (
     <>
       <main className="mainmail">
@@ -25,10 +31,7 @@ const EmailValidation = () => {
             <div className="emailmsg">
               <p>
                 We have sent an email to{" "}
-                <span
-                  style={{ color: "#FF595E", cursor: "pointer" }}
-                  onClick={handleEmailVerify}
-                >
+                <span style={{ color: "#FF595E", cursor: "pointer" }}>
                   {emailStore}
                 </span>{" "}
                 to confirm the validity of our email address. After receiving
@@ -36,6 +39,12 @@ const EmailValidation = () => {
               </p>
             </div>
           </header>
+          <button
+            className={!loginBtn ? "verified" : "verified-true"}
+            onClick={handleEmailVerify}
+          >
+            Login
+          </button>
 
           <p className="resend">
             If you did not get any mail,{" "}
