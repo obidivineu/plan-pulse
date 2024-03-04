@@ -8,9 +8,11 @@ import Categorymedia from "../../components/media-category/Categorymedia";
 import { useContext } from "react";
 import { AppContext } from "../../context";
 import Plancategory from "../../components/plancategory/Plancategory";
+import Createmember from "../creatememember/Createmember";
+import CreatePlan from "../createplan/Createplan";
 
 const Userdashboard = () => {
-  const { showPlanCategory } = useContext(AppContext);
+  const { showPlanCategory, addMember, toCreatePlan } = useContext(AppContext);
   return (
     <main className="user-dashboard-container">
       <div className="user-dashboard-first-container">
@@ -42,6 +44,18 @@ const Userdashboard = () => {
       {showPlanCategory ? (
         <div className="plan-category-div">
           <Plancategory />
+        </div>
+      ) : null}
+
+      {addMember ? (
+        <div className="add-member-div">
+          <Createmember />
+        </div>
+      ) : null}
+
+      {toCreatePlan ? (
+        <div className="add-plan-for-member">
+          (<CreatePlan />)
         </div>
       ) : null}
     </main>

@@ -1,22 +1,26 @@
-body{
+/* body{
     background-color: #fdfdf7;
-}
+} */
 
 .batch-upload-container{
     width:100%;
-    min-height:auto;
+    height:100%;
     background-color: #fdfdf7;
     display: flex;
     flex-direction: column;
     align-items: center;
+    position: relative;
+     overflow:scroll;
 }
 
 .batch-upload-logo-div{
-    width:40%;
-    height:70px;
+    width:10%;
+    height:10%;
     display: flex;
     justify-content: center;
-    margin-top: 20px;
+    margin-bottom: 3%;
+
+    
 }
 
 .batch-upload-logo{
@@ -30,46 +34,59 @@ body{
 
 
 
-.batch-exit{
-    width:3%;
-    height:35px;
+
+
+.batch-exit-loop{
+    width:30px;
+    height: 30px;
     border-radius: 100%;
-    background-color:rgb(195, 191, 195);
+    /* background-color:rgb(195, 191, 195); */
     border:1px;
     display: flex;
     justify-content: center;
     align-items: center;
     font-family: sans-serif;
-    margin-left: 400px;
+    margin-right: 10%;
+    margin-bottom: 3%;
     color:#fdfdf7;
     cursor: pointer;
-    margin-bottom: 5px;
     font-family: Roboto, sans-serif;
+    background-color: red;
+    position: absolute;
+    left: 110%;
+    top:4%;
+    cursor: pointer;
 }
 
-.batch-exit:hover{
+.batch-exit-loop:hover{
  background-color: #fdfdf7;
  border:2px solid red;
  cursor: pointer;
  color:#FF595E;
+  position: absolute;
 }
 
 .batch-upload-form{
     width:50%;
-    height:fit-content;
-    background-color: #fdfdf7;
+    height:auto;
+    /* background-color: #fdfdf7; */
     border-radius: 5px;
     display: flex;
     flex-direction: column;
     align-items: center;
+  
+     position: absolute;
+     top:20%;
+   
 }
 
 
 .head-batch-upload{
-  margin-top: 30px;
   font-size: 20px;
   font-weight: 600;
   font-family: Roboto, sans serif;
+   position: absolute;
+   top:22%;
 }
 /* .batch-upload-form{
     margin-top: 30px;
@@ -81,14 +98,19 @@ body{
 
 .excel{
     width:40%;
-    height:auto;
+    height:100%;
+    margin-top: 10%;;
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+   
+
    
 }
 
 .each-user{
  width:100%;
  height:70px;
- margin-top: 60px;
 
 }
 
@@ -128,16 +150,18 @@ body{
 
 
 .btns-Div{
-    width:40%;
-    height:30px;
+    width:60%;
+    height:40px;
     display: flex;
     justify-content: center;
-    margin-top: 70px;
+    margin-top: 5%;
     gap:10px;
+    margin-top: 10%;
 }
 
 .batch-upload-adduser{
     width:25%;
+    height:100%;
     background-color: #FF595E;
     border:1px;
     color:white;
@@ -149,6 +173,7 @@ body{
 
 .batch-upload-submit{
     width:25%;
+    height:100%;
     background-color: #FF595E;
     border:1px;
     color:white;

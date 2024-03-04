@@ -1,9 +1,55 @@
 import "./allmember.css";
-import { users } from "../../localdata";
+
 import del from "../../assets/delete.png";
 import shape from "../../assets/shape (1).png";
+import { useEffect, useContext, useState } from "react";
+import axios from "axios";
+import { AppContext } from "../../context";
 
 const Allmember = () => {
+  const { token, setToCreatePlan, setToSeeClient, setTheClientSelectedId } =
+    useContext(AppContext);
+  const [allMember, setAllMember] = useState([]);
+
+  const handleDel = async (num) => {
+    const newData = await axios.delete(
+      `https://planpulse.onrender.com/delete/${num} `,
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
+    console.log(newData);
+  };
+
+  const handleSelect = (num) => {
+    const theSelected = allMember.map((item) => {
+      if (item.membershipId === num && item.status === false) {
+        setToCreatePlan(true);
+        setTheClientSelectedId(item.membershipId);
+        return { ...item, selected: true };
+      } else if (item.membershipId === num && item.status === true) {
+        setToSeeClient(true);
+        return { ...item, selected: true };
+      } else {
+        return { ...item, selected: false };
+      }
+    });
+    setAllMember(theSelected);
+  };
+
+  useEffect(() => {
+    axios
+      .get("https://planpulse.onrender.com/getAllMember", {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
+      .then((res) => setAllMember(res.data.data));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   return (
     <main className="allmember-container">
       <header className="allmember-header">
@@ -31,20 +77,52 @@ const Allmember = () => {
       </header>
       <div className="allmember-line"></div>
       <section className="allmember-person">
-        {users.map((item, index) => {
-          return (
-            <section className="a-user" key={item.id}>
-              <div className="a-user-index">{index + 1}</div>
-              <div className="a-user-name">{item.name}</div>
-              <div className="a-user-id">{item.id}</div>
-              <div className="a-user-status">{item.status}</div>
-              <div className="a-user-plan">{item.plan}</div>
-              <div className="del-div">
-                <img src={del} alt="del" className="del" />
-              </div>
-            </section>
-          );
-        })}
+        {!allMember
+          ? null
+          : allMember.map((item, index) => {
+              return (
+                <section
+                  className={!item.selected ? "a-user" : "a-user-true"}
+                  key={item.membershipId}
+                >
+                  <>
+                    <div
+                      className="a-user-index"
+                      onClick={() => handleSelect(item.membershipId)}
+                    >
+                      {index + 1}
+                    </div>
+                    <div
+                      className="a-user-name"
+                      onClick={() => handleSelect(item.membershipId)}
+                    >
+                      {item.fullName}
+                    </div>
+                    <div
+                      className="a-user-id"
+                      onClick={() => handleSelect(item.membershipId)}
+                    >
+                      {item.membershipId}
+                    </div>
+                    <div
+                      className="a-user-status"
+                      onClick={() => handleSelect(item.membershipId)}
+                    >
+                      {item.status ? "Active" : "Not-Active"}
+                    </div>
+                    <div
+                      className="a-user-plan"
+                      onClick={() => handleSelect(item.membershipId)}
+                    >
+                      {item.status ? "1-month Plan" : "No-Plan"}
+                    </div>
+                  </>
+                  <div className="del-div" onClick={() => handleDel(item._id)}>
+                    <img src={del} alt="del" className="del" />
+                  </div>
+                </section>
+              );
+            })}
       </section>
     </main>
   );

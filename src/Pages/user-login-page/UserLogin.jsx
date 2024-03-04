@@ -6,8 +6,7 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import axios from "axios";
 import Loader from "../../components/loader/Loader";
-import { useState } from "react";
-import { useContext } from "react";
+import { useState, useContext } from "react";
 import { AppContext } from "../../context";
 
 const schema = yup.object().shape({
@@ -22,7 +21,8 @@ const schema = yup.object().shape({
 const UserLogin = () => {
   const navigate = useNavigate();
   const [changeSigninBtn, setChangeSigninBtn] = useState(false);
-  const { setEmailStore } = useContext(AppContext);
+  const { setErrorMsg, setToken } = useContext(AppContext);
+
   const {
     register,
     handleSubmit,
@@ -45,22 +45,23 @@ const UserLogin = () => {
       email: data.email,
       password: data.password,
     };
-    const config = {
-      headers: {
-        "Content-Type": "Application/json",
-      },
-    };
+    // const config = {
+    //   headers: {
+    //     "Content-Type": "Application/json",
+    //   },
+    // };
     try {
-      const response = await axios.post(url, mainData, config);
-      console.log(response.data);
-
+      const response = await axios.post(url, mainData);
+      console.log(response.data.token);
+      setToken(response.data.token);
       setChangeSigninBtn(false);
+      navigate("/user-dashboard");
     } catch (error) {
       console.log(error.message);
+      setErrorMsg(error.message);
       setChangeSigninBtn(false);
+      navigate("/erroLogin");
     }
-    setEmailStore(data.email);
-    navigate("/email-validation");
   };
 
   return (
@@ -80,32 +81,32 @@ const UserLogin = () => {
             </p>
             <form className="loging-form" onSubmit={handleSubmit(overSubmit)}>
               <div className="inputDiv">
-                <div className="detail">
-                  <section className="email-detail">
-                    <span className="span-text">
-                      Email<span style={{ color: "red" }}>*</span>
-                    </span>
-                    <input
-                      type="text"
-                      placeholder="Enter Email"
-                      className="input-data"
-                      {...register("email")}
-                    />
-                    <p>{errors.email?.message}</p>
-                  </section>
-                  <section className="pass-detail">
-                    <span className="span-text">
-                      Password<span style={{ color: "red" }}>*</span>
-                    </span>
-                    <input
-                      type="text"
-                      placeholder="Enter Password"
-                      className="input-data"
-                      {...register("password")}
-                    />
-                    <p>{errors.password?.message}</p>
-                  </section>
-                </div>
+                <section className="email-detail">
+                  <span className="span-text">
+                    Email<span style={{ color: "red" }}>*</span>
+                  </span>
+                  <input
+                    type="text"
+                    placeholder="Enter Email"
+                    className="input-data"
+                    {...register("email")}
+                  />
+                  <p className="login-error-message">{errors.email?.message}</p>
+                </section>
+                <section className="pass-detail">
+                  <span className="span-text">
+                    Password<span style={{ color: "red" }}>*</span>
+                  </span>
+                  <input
+                    type="password"
+                    placeholder="Enter Password"
+                    className="input-data"
+                    {...register("password")}
+                  />
+                  <p className="login-error-message">
+                    {errors.password?.message}
+                  </p>
+                </section>
                 <div className="remeber-text">
                   <input type="checkbox" className="checkbox" />
                   Remember Password

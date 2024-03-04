@@ -6,7 +6,7 @@ import { AppContext } from "../../context";
 import groupW from "../../assets/gw.png";
 
 const Dashboard = () => {
-  const { cardDatas } = useContext(AppContext);
+  const { cardDatas, setAddMember } = useContext(AppContext);
   const [addTog, setAddTog] = useState(false);
 
   useEffect(() => {
@@ -15,9 +15,14 @@ const Dashboard = () => {
     }, 1000);
   }, [addTog, setAddTog]);
 
+  const handleAddNewMember = async () => {
+    setAddMember(true);
+    setAddTog(true);
+  };
+
   return (
     <main className="dashboard-container">
-      <div className="btn-dash" onClick={() => setAddTog(true)}>
+      <div className="btn-dash" onClick={handleAddNewMember}>
         <Button
           btn="Add New Member"
           wid={120}

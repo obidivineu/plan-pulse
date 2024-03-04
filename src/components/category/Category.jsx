@@ -1,9 +1,5 @@
 /* eslint-disable react/prop-types */
 import "./category.css";
-//import { data } from "../../localdata";
-//import { useState } from "react";
-// import { useContext } from "react";
-// import { AppContext } from "../../context";
 
 const Category = (props) => {
   return (

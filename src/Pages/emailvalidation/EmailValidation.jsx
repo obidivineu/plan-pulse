@@ -3,9 +3,17 @@ import EMAIL from "../../assets/omailR1.png";
 import LOG from "../../assets/image6.png";
 import { useContext } from "react";
 import { AppContext } from "../../context";
+import axios from "axios";
 
 const EmailValidation = () => {
-  const { emailStore } = useContext(AppContext);
+  const { emailStore, userId } = useContext(AppContext);
+
+  const handleEmailVerify = async () => {
+    const response = await axios.get(
+      `https://planpulse.onrender.com/api/v1/verifyEmail/${userId}`
+    );
+    console.log(response.data);
+  };
   return (
     <>
       <main className="mainmail">
@@ -17,7 +25,10 @@ const EmailValidation = () => {
             <div className="emailmsg">
               <p>
                 We have sent an email to{" "}
-                <span style={{ color: "#FF595E", cursor: "pointer" }}>
+                <span
+                  style={{ color: "#FF595E", cursor: "pointer" }}
+                  onClick={handleEmailVerify}
+                >
                   {emailStore}
                 </span>{" "}
                 to confirm the validity of our email address. After receiving
