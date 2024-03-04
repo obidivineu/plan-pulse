@@ -46,7 +46,10 @@ const Allmember = () => {
           Authorization: `Bearer ${token}`,
         },
       })
-      .then((res) => setAllMember(res.data.data));
+      .then((res) =>
+        localStorage.setItem("allMember", JSON.stringify(res.data.data))
+      );
+
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -77,9 +80,9 @@ const Allmember = () => {
       </header>
       <div className="allmember-line"></div>
       <section className="allmember-person">
-        {!allMember
+        {!JSON.parse(localStorage.getItem("allMember"))
           ? null
-          : allMember.map((item, index) => {
+          : JSON.parse(localStorage.getItem("allmember")).map((item, index) => {
               return (
                 <section
                   className={!item.selected ? "a-user" : "a-user-true"}

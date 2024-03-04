@@ -21,7 +21,13 @@ export const AppProvider = ({ children }) => {
   const [toCreatePlan, setToCreatePlan] = useState(false);
   const [toSeeClient, setToSeeClient] = useState(false);
   const [theClientSelectedId, setTheClientSelectedId] = useState("");
-  const [userId, setUserId] = useState("");
+  const [userData, setUserData] = useState({});
+  const [totalMember, setTotalMember] = useState(0);
+  const [activeMember, setActiveMember] = useState(0);
+  const [notActiveMember, setNotActiveMember] = useState(0);
+  const [oneMonthMember, setOneMonthMember] = useState(0);
+  const [twoMonthMember, setTwoMonthMember] = useState(0);
+  const [threeMonthMember, setThreeMonthMember] = useState(0);
 
   return (
     <AppContext.Provider
@@ -58,8 +64,20 @@ export const AppProvider = ({ children }) => {
         setToSeeClient,
         theClientSelectedId,
         setTheClientSelectedId,
-        userId,
-        setUserId,
+        userData,
+        setUserData,
+        totalMember,
+        setTotalMember,
+        activeMember,
+        setActiveMember,
+        notActiveMember,
+        setNotActiveMember,
+        oneMonthMember,
+        setOneMonthMember,
+        twoMonthMember,
+        setTwoMonthMember,
+        threeMonthMember,
+        setThreeMonthMember,
       }}
     >
       {children}

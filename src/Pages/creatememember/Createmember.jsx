@@ -12,6 +12,10 @@ const Createmember = () => {
     setAddMember(false);
   };
 
+  // const handleChange = (e) => {
+  //   console.log(e.target.value);
+  // };
+
   const handleSub = async () => {
     const client = {
       fullName: nameRef.current.value,
@@ -39,13 +43,8 @@ const Createmember = () => {
         <div className="logodelete" onClick={handleExit}>
           X
         </div>
-        <form className="inputs" onClick={handleSub}>
-          <input
-            type="text"
-            placeholder="Name"
-            ref={nameRef}
-            onChange={(e) => console.log(e.target.value)}
-          />
+        <form className="inputs" onSubmit={handleSub}>
+          <input type="text" placeholder="Name" ref={nameRef} />
           {/* <select type="text" ref={planRef} className="selec">
             <option value="">Choose Plan</option>
             <option value="one">1-Month-Plan</option>

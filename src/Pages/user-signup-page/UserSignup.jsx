@@ -39,7 +39,7 @@ const UserSignup = () => {
   const [profPic, setProfPic] = useState("");
   const [changeSigninBtn, setChangeSigninBtn] = useState(false);
   const [goBack, setGoBack] = useState(false);
-  const { setEmailStore, setErrorMsg, setUserId } = useContext(AppContext);
+  const { setEmailStore, setErrorMsg } = useContext(AppContext);
 
   const handleBack = () => {
     setGoBack(true);
@@ -84,7 +84,7 @@ const UserSignup = () => {
       navigate("/user-dashboard");
       setChangeSigninBtn(false);
       navigate("/email-validation");
-      setUserId(response.data.data._id);
+      localStorage.setItem("userDatas", JSON.stringify(response.data.data));
     } catch (error) {
       console.log(error.message);
       setChangeSigninBtn(false);

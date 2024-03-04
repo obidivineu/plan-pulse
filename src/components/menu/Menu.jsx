@@ -6,7 +6,6 @@ import logout from "../../assets/logout.png";
 import logoutC from "../../assets/logout-color.png";
 import { useContext, useEffect } from "react";
 import { data } from "../../localdata";
-import userColor from "../../assets/user-color.png";
 import { AppContext } from "../../context";
 import { useNavigate } from "react-router";
 
@@ -19,6 +18,8 @@ const Menu = () => {
     setShowPlanCategory,
     setIsLogOut,
     isLogOut,
+    userData,
+    setUserData,
   } = useContext(AppContext);
 
   const handleChange = (num) => {
@@ -45,10 +46,21 @@ const Menu = () => {
       setIsLogOut(false);
     }, 1000);
   }, [isLogOut, setIsLogOut]);
+
+  useEffect(() => {
+    const user = JSON.parse(localStorage.getItem("userDatas"));
+    setUserData(user);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   return (
     <main className="menu-container">
       <section className="menu-company-logo">
-        <img src={userColor} alt="logo" className="menu-company-logo-img" />
+        <img
+          src={userData.profilePicture}
+          alt="logo"
+          className="menu-company-logo-img"
+        />
       </section>
       <section className="menu-category">
         {datas.map((item) => {
