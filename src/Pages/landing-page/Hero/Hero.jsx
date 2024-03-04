@@ -20,8 +20,8 @@ const Hero = () => {
           <h1 className="workout" style={{fontSize: "60px",}}>Workout with <br /><span className="plan">Plan</span></h1>
         </div>
         <div className="subtext">
-          <p className="integrate">We encourage you to integrate the <br /> plan method in your
-            organization,<br /> as it is a good means to ensure consistency.</p>
+          <p className="integrate">We encourage you to integrate the <br /> plan in your
+            organization which is<br/> good means to ensure consistency.</p>
         </div>
         <div className="buttonbox">
           <button className="starting" style={{

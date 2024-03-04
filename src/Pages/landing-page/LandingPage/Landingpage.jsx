@@ -59,7 +59,7 @@ const Landingpage = () => {
               </div>
               <div className="group">
                 <div className="dot"></div>
-                <p className="ouroffertext">7 Days Trial (new client)</p>
+                <p className="ouroffertext">14 Days Trial (new client)</p>
               </div>
             </div>
           </div>
@@ -67,7 +67,7 @@ const Landingpage = () => {
         <div className="versionb">
           <div className="payedversion">
             <div className="topversion">
-              <h3 className="Freeveersion">Payed Version</h3><span className="naira">₦50,000</span>
+              <h3 className="Freeveersion">Payed Version</h3><span className="naira">₦100,000</span>
             </div>
             <div className="bottomversion">
               <div className="group">
@@ -77,6 +77,10 @@ const Landingpage = () => {
               <div className="group">
                 <div className="dot"></div>
                 <p className="ouroffertext">Unlimited  access to  CTA</p>
+              </div>
+              <div className="group">
+                <div className="dot"></div>
+                <p className="ouroffertext">3 Months Subscription</p>
               </div>
               <div className="accessbtn">
                 <button className="paying">PAY</button>
