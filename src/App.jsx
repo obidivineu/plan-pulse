@@ -14,7 +14,7 @@ import UserSignup from "../src/Pages/user-signup-page/UserSignup";
 import Userdashboard from "./Pages/user-dashboard/Userdashboard";
 import Resetpasswordform from "./Pages/resetform/Resetpasswordform";
 import Error from "./components/error/Error";
-import Errologin from "./components/error-login/Errologin";
+import Errologin from "./components/error-login/Errorlogin";
 import Userprivacy from "./UserPrivacy";
 
 const App = () => {
