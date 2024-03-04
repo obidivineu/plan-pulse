@@ -1,14 +1,17 @@
 import "./usersignup.css";
 import wallpaper from "../../assets/welcome2.png";
 import logo from "../../assets/image6.png";
+
 import * as yup from "yup";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import { useRef, useState } from "react";
+import { useRef, useState, useEffect } from "react";
 import face from "../../assets/user.png";
 import Loader from "../../components/loader/Loader";
+import { useContext } from "react";
+import { AppContext } from "../../context";
 
 const schema = yup.object().shape({
   email: yup.string().required("please fill up the email field"),
@@ -27,7 +30,6 @@ const schema = yup.object().shape({
 });
 
 const UserSignup = () => {
-
   const navigate = useNavigate();
   const inputRef = useRef(null);
   const [data, setData] = useState({
@@ -36,6 +38,18 @@ const UserSignup = () => {
   const [isPhoto, setIsPhoto] = useState(false);
   const [profPic, setProfPic] = useState("");
   const [changeSigninBtn, setChangeSigninBtn] = useState(false);
+  const [goBack, setGoBack] = useState(false);
+  const { setEmailStore, setErrorMsg, setUserId } = useContext(AppContext);
+
+  const handleBack = () => {
+    setGoBack(true);
+  };
+
+  useEffect(() => {
+    setTimeout(() => {
+      setGoBack(false);
+    }, 1000);
+  }, [goBack, setGoBack]);
 
   const {
     register,
@@ -68,10 +82,15 @@ const UserSignup = () => {
       console.log(response.data);
       navigate("/user-dashboard");
       setChangeSigninBtn(false);
+      navigate("/email-validation");
+      setUserId(response.data.data._id);
     } catch (error) {
       console.log(error.message);
       setChangeSigninBtn(false);
+      setErrorMsg(error.message);
+      navigate("/error");
     }
+    setEmailStore(data.email);
   };
 
   const handleAllClick = () => {
@@ -91,7 +110,7 @@ const UserSignup = () => {
   return (
     <main className="signup-container">
       {!changeSigninBtn ? (
-        <form className="signup-form" onSubmit={handleSubmit(overSubmit)}>
+        <section className="signup-form">
           <section className="left-sec">
             <div className="signup-inside-div">
               <img src={wallpaper} alt="wall" className="signup-wallpaper" />
@@ -101,7 +120,7 @@ const UserSignup = () => {
               <header className="signup-logo-div">
                 <img src={logo} alt="logo" className="signup-logo" />
               </header>
-             
+
               <div className="signup-headertext">
                 Please enter your details to signup and be part of our great
                 community
@@ -115,9 +134,15 @@ const UserSignup = () => {
                   Login
                 </span>
               </div>
+              <button
+                className={!goBack ? "signup-goback" : "signup-goback-true"}
+                onClick={handleBack}
+              >
+                Go Back
+              </button>
             </div>
           </section>
-          <section className="right-sec">
+          <form className="right-sec" onSubmit={handleSubmit(overSubmit)}>
             <header className="signup-logo-div2">
               <img src={logo} alt="logo" className="signup-logo2" />
             </header>
@@ -146,7 +171,9 @@ const UserSignup = () => {
                 placeholder="company name"
                 {...register("companyName")}
               />
-              <p>{errors.companyName?.message}</p>
+              <p className="signup-error-message">
+                {errors.companyName?.message}
+              </p>
             </div>
             <div className="signup-input-label-div">
               <label className="signup-label">Email </label>
@@ -156,7 +183,7 @@ const UserSignup = () => {
                 placeholder="Email"
                 {...register("email")}
               />
-              <p>{errors.email?.message}</p>
+              <p className="signup-error-message">{errors.email?.message}</p>
             </div>
             <div className="signup-input-label-div">
               <label className="signup-label">Phone Number</label>
@@ -166,7 +193,9 @@ const UserSignup = () => {
                 placeholder="Phone Number"
                 {...register("phoneNumber")}
               />
-              <p>{errors.phoneNumber?.message}</p>
+              <p className="signup-error-message">
+                {errors.phoneNumber?.message}
+              </p>
             </div>
             <div className="signup-input-label-div">
               <label className="signup-label">Password</label>
@@ -176,7 +205,7 @@ const UserSignup = () => {
                 placeholder="Password"
                 {...register("password")}
               />
-              <p>{errors.password?.message}</p>
+              <p className="signup-error-message">{errors.password?.message}</p>
             </div>
             <div className="signup-input-label-div">
               <label className="signup-label">Confirm Password</label>
@@ -186,20 +215,22 @@ const UserSignup = () => {
                 placeholder="Confirm Password"
                 {...register("confirmPassword")}
               />
-              <p>{errors.confirmPassword?.message}</p>
+              <p className="signup-error-message">
+                {errors.confirmPassword?.message}
+              </p>
             </div>
             <button
               className={!changeSigninBtn ? "signup-btn" : "signup-btn-true"}
               type="submit"
             >
-              Sign Up
+              Signup
             </button>
             <div className="signup-subtext-down">
               Already have an account ?
               <span className="signup-subtext-span-down">Login</span>
             </div>
-          </section>
-        </form>
+          </form>
+        </section>
       ) : (
         <Loader />
       )}

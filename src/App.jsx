@@ -1,5 +1,5 @@
 import "./App.css";
-import { BrowserRouter, HashRouter, Route, Routes } from "react-router-dom";
+import { HashRouter, Route, Routes } from "react-router-dom";
 import UserLogin from "../src/Pages/user-login-page/UserLogin";
 import ForgotPassword from "../src/Pages/forgot-password-page/ForgotPassword";
 import EmailValidation from "../src/Pages/emailvalidation/EmailValidation";
@@ -13,6 +13,9 @@ import HomeScreen from "../src/Pages/landing-page/HomeScreen/HomeScreen";
 import UserSignup from "../src/Pages/user-signup-page/UserSignup";
 import Userdashboard from "./Pages/user-dashboard/Userdashboard";
 import Resetpasswordform from "./Pages/resetform/Resetpasswordform";
+import Error from "./components/error/Error";
+import Errologin from "./components/error-login/Errorlogin";
+import Userprivacy from "./UserPrivacy";
 
 const App = () => {
   return (
@@ -30,8 +33,12 @@ const App = () => {
           <Route path="/failed-transfer" element={<Failedtransfer />} />
           <Route path="/success-pass" element={<Successful />} />
           <Route path="/success-transfer" element={<Successfultransfer />} />
-          <Route path="/user-dashboard" element={<Userdashboard />} />
           <Route path="/reset-form" element={<Resetpasswordform />} />
+          <Route path="/error" element={<Error />} />
+          <Route path="/erroLogin" element={<Errologin />} />
+          <Route element={<Userprivacy />}>
+            <Route path="/user-dashboard" element={<Userdashboard />} />
+          </Route>
         </Routes>
       </HashRouter>
     </>

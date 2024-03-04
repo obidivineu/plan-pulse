@@ -1,25 +1,26 @@
-import "../creatememember/createmember.css";
+import "./createplan.css";
 import { useContext, useRef } from "react";
 import { AppContext } from "../../context";
 import axios from "axios";
 
-const Createmember = () => {
-  const { setAddMember, token } = useContext(AppContext);
+const CreatePlan = () => {
+  const { setToCreatePlan, token, theClientSelectedId } =
+    useContext(AppContext);
   const nameRef = useRef(null);
-  //const planRef = useRef(null);
+  const planRef = useRef(null);
 
   const handleExit = () => {
-    setAddMember(false);
+    setToCreatePlan(false);
   };
 
   const handleSub = async () => {
     const client = {
-      fullName: nameRef.current.value,
-      // plan: planRef.current.value,
+      id: nameRef.current.value,
+      plan: planRef.current.value,
     };
     try {
       const response = await axios.post(
-        "https://planpulse.onrender.com/addClient",
+        "https://planpulse.onrender.com/addPlan",
         client,
         {
           headers: {
@@ -28,7 +29,6 @@ const Createmember = () => {
         }
       );
       console.log(response.data);
-      nameRef.current.value = "";
     } catch (error) {
       console.log(error.message);
     }
@@ -42,21 +42,22 @@ const Createmember = () => {
         <form className="inputs" onClick={handleSub}>
           <input
             type="text"
-            placeholder="Name"
+            placeholder="User-Id"
             ref={nameRef}
+            value={theClientSelectedId}
             onChange={(e) => console.log(e.target.value)}
           />
-          {/* <select type="text" ref={planRef} className="selec">
+          <select type="text" ref={planRef} className="selec">
             <option value="">Choose Plan</option>
-            <option value="one">1-Month-Plan</option>
-            <option value="two">2-Month-Plan</option>
-            <option value="three">3-Month-Plan</option>
-          </select> */}
-          <button type="submit">Add</button>
+            <option value="one month plan">1-Month-Plan</option>
+            <option value="two month plan">2-Month-Plan</option>
+            <option value="three month plan">3-Month-Plan</option>
+          </select>
+          <button type="submit">Subscribe</button>
         </form>
       </div>
     </main>
   );
 };
 
-export default Createmember;
+export default CreatePlan;
