@@ -56,6 +56,7 @@ const UserLogin = () => {
       setToken(response.data.token);
       setChangeSigninBtn(false);
       navigate("/user-dashboard");
+      localStorage.setItem("pass", JSON.stringify(response.data.token));
     } catch (error) {
       console.log(error.message);
       setErrorMsg(error.message);

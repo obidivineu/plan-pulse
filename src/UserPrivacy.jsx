@@ -1,11 +1,12 @@
 import { Navigate, Outlet } from "react-router-dom";
-import { useContext } from "react";
-import { AppContext } from "./context";
+// import { useContext } from "react";
+// import { AppContext } from "./context";
 
 const Userprivacy = () => {
-  const { token } = useContext(AppContext);
+  //const { token } = useContext(AppContext);
+  const myPass = JSON.parse(localStorage.getItem("pass"));
 
-  return <>{!token ? <Navigate to="/home-screen" /> : <Outlet />}</>;
+  return <>{!myPass ? <Navigate to="/home-screen" /> : <Outlet />}</>;
 };
 
 export default Userprivacy;
