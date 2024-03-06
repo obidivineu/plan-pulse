@@ -6,8 +6,9 @@ import axios from "axios";
 import { AppContext } from "../../context";
 import CreatePlans from "../../Pages/createplan/Createplan";
 
+
 const Allmember = () => {
-  const { setToCreatePlan, setToSeeClient, setTheClientSelectedId, allMember, setAllMember, modalId ,setmodalId} =
+  const { setToCreatePlan, setToSeeClient, setTheClientSelectedId, allMember, setAllMember, modalId, setmodalId, setfullName } =
     useContext(AppContext);
   //  const [allMember, setAllMember] = useState([]);
 
@@ -67,16 +68,18 @@ const Allmember = () => {
   // }, []);
   // const getAllMember = JSON.parse(localStorage.getItem("allMember"));
 
-  const handleOpenModal = (_id,fullName)=>{
-    const updatedMembers = allMember.map((item)=>{
-      if(item._id===_id){
-        return {...item,Open:true}
-      }
-      return item
-    })
-    setAllMember(updatedMembers)
-    setmodalId(_id)
+  const handleOpenModal = (_id, fullName) => {
+    // const updatedMembers = allMember.map((item)=>{
+    //   if(item._id===_id){
+    //     return {...item,Open:true}
+    //   }
+    //   return item
+    // })
     setfullName(fullName)
+    console.log(_id, fullName)
+    // setAllMember(updatedMembers)
+    setmodalId(_id)
+    // setfullName(fullName)
   }
 
 
@@ -103,13 +106,13 @@ const Allmember = () => {
         <div className="shape-div">
           <img src={shape} alt="shape" className="shape" />
         </div>
-        <div className="word">Delete</div>
+        <div className="word">Delete </div>
       </header>
 
       <div className="allmember-line"></div>
       <section className="allmember-person">
 
-      
+
 
 
 
@@ -118,22 +121,22 @@ const Allmember = () => {
             <section
               className={!item.selected ? "a-user" : "a-user-true"}
               key={item._id}
-              onClick={()=>handleOpenModal(item._id,item.fullName)}
+              onClick={() => { handleOpenModal(item.membershipId, item.fullName); console.log(item._id, item.fullName) }}
             >
               <>
                 <div
                   className="a-user-index"
                   // onClick={() => handleSelect(item.membershipId)}
-                  onClick={()=>handleOpenModal(item._id,item.fullName)}
-                  
+                  onClick={() => handleOpenModal(item._id, item.fullName)}
+
                 >
                   {index + 1}
                 </div>
                 <div
                   className="a-user-name"
                   // onClick={() => handleSelect(item.membershipId)}
-                  onClick={()=>handleOpenModal(item._id , item.fullName)}
-                  
+                  onClick={() => handleOpenModal(item._id, item.fullName)}
+
                 >
                   {item.fullName}
                 </div>
@@ -159,7 +162,7 @@ const Allmember = () => {
               <div className="del-div" onClick={() => handleDel(item._id)}>
                 <MdAutoDelete className="del" />
               </div>
-              {allMember.Open&&<CreatePlans inactiveId={item._id}  inactiveMembershipId={item.membershipId} inactivefullName={item.fullName}/>}
+              {allMember.Open && <CreatePlans inactiveId={item._id} inactiveMembershipId={item.membershipId} inactivefullName={item.fullName} />}
             </section>
           );
         }
