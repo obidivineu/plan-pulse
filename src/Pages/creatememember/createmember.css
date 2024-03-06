@@ -85,3 +85,8 @@
     cursor: pointer;
     color:#fdfdf7
 }
+.plan-cat-selects{
+    height: 20%;
+    width: 80%;
+    color: blue;
+}

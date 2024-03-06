@@ -28,6 +28,9 @@ export const AppProvider = ({ children }) => {
   const [oneMonthMember, setOneMonthMember] = useState(0);
   const [twoMonthMember, setTwoMonthMember] = useState(0);
   const [threeMonthMember, setThreeMonthMember] = useState(0);
+  const [allMember, setAllMember] = useState([]);
+  const [modalId,setmodalId]=useState("")
+  const [fullName,setfullName]=useState("")
 
   return (
     <AppContext.Provider
@@ -78,6 +81,9 @@ export const AppProvider = ({ children }) => {
         setTwoMonthMember,
         threeMonthMember,
         setThreeMonthMember,
+        allMember,setAllMember,
+        modalId,setmodalId,
+        fullName,setfullName
       }}
     >
       {children}

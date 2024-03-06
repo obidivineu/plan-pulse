@@ -1,42 +1,57 @@
 import "../creatememember/createmember.css";
-import { useContext, useRef } from "react";
+import { useContext, useRef, useState } from "react";
 import { AppContext } from "../../context";
 import axios from "axios";
 
+
 const Createmember = () => {
-  const { setAddMember, token } = useContext(AppContext);
-  const nameRef = useRef(null);
-  //const planRef = useRef(null);
+  const { setAddMember } = useContext(AppContext);
+  const [loading, setLoading] = useState(false)
+
+  const [createMemeber, setCreateMember] = useState({
+    fullName: '',
+    plan: '',
+  })
 
   const handleExit = () => {
     setAddMember(false);
   };
 
-  // const handleChange = (e) => {
-  //   console.log(e.target.value);
-  // };
+  const handleChange = (e) => {
+    setCreateMember({
+      ...createMemeber,
+      [e.target.name]: e.target.value
+    })
+  };
 
-  const handleSub = async () => {
-    const client = {
-      fullName: nameRef.current.value,
-      // plan: planRef.current.value,
-    };
+  const token = localStorage.getItem('pass')
+
+  const handleSub = async (e) => {
+    e.preventDefault()
+    setLoading(true)
+    // console.log(token)
+    console.log(createMemeber)
     try {
       const response = await axios.post(
         "https://planpulse.onrender.com/addClient",
-        client,
+        createMemeber,
         {
           headers: {
             Authorization: `Bearer ${token}`,
           },
         }
       );
-      console.log(response.data);
-      nameRef.current.value = "";
+      console.log(response);
+      setLoading(false)
+      
     } catch (error) {
-      console.log(error.message);
+      console.log(error);
     }
   };
+  
+
+
+
   return (
     <main className="create">
       <div className="creatememberbox">
@@ -44,15 +59,32 @@ const Createmember = () => {
           X
         </div>
         <form className="inputs" onSubmit={handleSub}>
-          <input type="text" placeholder="Name" ref={nameRef} />
-          {/* <select type="text" ref={planRef} className="selec">
-            <option value="">Choose Plan</option>
-            <option value="one">1-Month-Plan</option>
-            <option value="two">2-Month-Plan</option>
-            <option value="three">3-Month-Plan</option>
-          </select> */}
-          <button type="submit">Add</button>
+      
+          <input type="text" placeholder="Name" name="fullName" onChange={handleChange}/>
+          <select  id="" className="plan-cat-selects" name='plan' onChange={handleChange} >
+          <option value="" className="plan-cat-option" >
+            Choose Plan
+          </option>
+          <option className="plan-cat-option" value="1Month">
+            1Month
+          </option>
+          <option value="2Month" className="plan-cat-option">
+          2Month
+          </option>
+          <option value="3Month" className="plan-cat-option">
+            3Month
+          </option>
+        </select>
+      
+        
+          <button type="submit">
+           ADD
+          </button>
         </form>
+
+    
+       
+    
       </div>
     </main>
   );
