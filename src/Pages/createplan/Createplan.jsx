@@ -1,55 +1,66 @@
 import "./createplan.css";
-import { useContext, useRef } from "react";
+import { useContext, useRef, useState } from "react";
 import { AppContext } from "../../context";
 import axios from "axios";
+import { useParams } from "react-router-dom";
 import { useEffect } from "react";
 
 const CreatePlan = (props) => {
+  const {id} = useParams()
+  console.log(id);
   const { setToCreatePlan, token, theClientSelectedId, modalId, setmodalId, fullName, setfullName } =
     useContext(AppContext);
   const nameRef = useRef(null);
   const planRef = useRef(null);
   console.log(fullName)
   console.log(modalId)
+  console.log(props)
   const handleExit = () => {
     setToCreatePlan(false);
   };
 
+  const [dataId, setDataId] = useState(localStorage.getItem('userDatas'))
+  console.log(dataId)
+
+  
+
   const handleSub = async () => {
-    const client = {
-      id: nameRef.current.value,
-      plan: planRef.current.value,
-    };
-    try {
-      const response = await axios.post(
-        "https://planpulse.onrender.com/addPlan",
-        client,
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      );
-      console.log(response.data);
-    } catch (error) {
-      console.log(error.message);
-    }
+    // const client = {
+    //   id: nameRef.current.value,
+    //   plan: planRef.current.value,
+    // };
+    const userDataId = dataId._id
+    console.log(userDataId)
+    // try {
+    //   const response = await axios.put(
+    //     `https://planpulse.onrender.com/addPlan/${id}`,
+    //     {
+    //       headers: {
+    //         Authorization: `Bearer ${token}`,
+    //       },
+    //     }
+    //   );
+    //   console.log(response.data);
+    //   console.log(client.id);
+    // } catch (error) {
+    //   console.log(error.message);
+    // }
+
   };
 
+  
 
 
   const getOne=async ()=>{
     try{
-      const response = await axios.get("https://planpulse.onrender.com/getOneMember/:id");
+      const response = await axios.get('https://planpulse.onrender.com/getOneMember');
       console.log(response.data)
 
     }catch(error){
       console.error(error)
     }
   }
-  useEffect(()=>{
 
-  },[])
   
   return (
     <main className="create">
@@ -63,7 +74,7 @@ const CreatePlan = (props) => {
           <div className='include'>
             <div className='cancelling'>
             </div>
-            <div className='planadd'>Full Name:<div className="user">{props.inactivefullName}</div></div>
+            <div className='planadd'>Full Name:<div className="user">{fullName}</div></div>
             <div className='planadd'> Membership-id: <div className="user">{modalId}</div></div>
           </div>
           <div className="mid">
@@ -73,7 +84,7 @@ const CreatePlan = (props) => {
               <option value="two month plan">2Month</option>
               <option value="three month plan">3Month</option>
             </select>
-            <button className='clickon'>Subscribe</button>
+            <button className='clickon' onClick={handleSub}>Subscribe</button>
           </div>
         </div>
       </div>
