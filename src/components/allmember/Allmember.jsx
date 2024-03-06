@@ -1,16 +1,19 @@
 import "./allmember.css";
-
-import del from "../../assets/delete.png";
+import { MdAutoDelete } from "react-icons/md";
 import shape from "../../assets/shape (1).png";
 import { useEffect, useContext, useState } from "react";
 import axios from "axios";
 import { AppContext } from "../../context";
+import CreatePlans from "../../Pages/createplan/Createplan";
 
 const Allmember = () => {
-  const { token, setToCreatePlan, setToSeeClient, setTheClientSelectedId } =
+  const { setToCreatePlan, setToSeeClient, setTheClientSelectedId, allMember, setAllMember, modalId ,setmodalId} =
     useContext(AppContext);
-  const [allMember, setAllMember] = useState([]);
+  //  const [allMember, setAllMember] = useState([]);
 
+  const [toCreatePlans, setToCreatePlans] = useState(false);
+
+  console.log(allMember)
   const handleDel = async (num) => {
     const newData = await axios.delete(
       `https://planpulse.onrender.com/delete/${num} `,
@@ -39,19 +42,43 @@ const Allmember = () => {
     setAllMember(theSelected);
   };
 
-  useEffect(() => {
-    axios
-      .get("https://planpulse.onrender.com/getAllMember", {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
+  const getAllMember = async () => {
+    const token = localStorage.getItem('pass')
+    // console.log(token)
+    await axios.get("https://planpulse.onrender.com/getAllMember", {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    })
+      .then(res => {
+        console.log(res.data.data),
+          setAllMember(res.data.data)
       })
-      .then((res) =>
-        localStorage.setItem("allMember", JSON.stringify(res.data.data))
-      );
+      .catch(err => {
+        console.log(err)
+      })
+  }
 
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+
+  useEffect(() => {
+    getAllMember()
+  })
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  // }, []);
+  // const getAllMember = JSON.parse(localStorage.getItem("allMember"));
+
+  const handleOpenModal = (_id,fullName)=>{
+    const updatedMembers = allMember.map((item)=>{
+      if(item._id===_id){
+        return {...item,Open:true}
+      }
+      return item
+    })
+    setAllMember(updatedMembers)
+    setmodalId(_id)
+    setfullName(fullName)
+  }
+
 
   return (
     <main className="allmember-container">
@@ -78,54 +105,66 @@ const Allmember = () => {
         </div>
         <div className="word">Delete</div>
       </header>
+
       <div className="allmember-line"></div>
       <section className="allmember-person">
-        {!JSON.parse(localStorage.getItem("allMember"))
-          ? null
-          : JSON.parse(localStorage.getItem("allmember")).map((item, index) => {
-              return (
-                <section
-                  className={!item.selected ? "a-user" : "a-user-true"}
-                  key={item.membershipId}
+
+      
+
+
+
+        {allMember?.map((item, index) => {
+          return (
+            <section
+              className={!item.selected ? "a-user" : "a-user-true"}
+              key={item._id}
+              onClick={()=>handleOpenModal(item._id,item.fullName)}
+            >
+              <>
+                <div
+                  className="a-user-index"
+                  // onClick={() => handleSelect(item.membershipId)}
+                  onClick={()=>handleOpenModal(item._id,item.fullName)}
+                  
                 >
-                  <>
-                    <div
-                      className="a-user-index"
-                      onClick={() => handleSelect(item.membershipId)}
-                    >
-                      {index + 1}
-                    </div>
-                    <div
-                      className="a-user-name"
-                      onClick={() => handleSelect(item.membershipId)}
-                    >
-                      {item.fullName}
-                    </div>
-                    <div
-                      className="a-user-id"
-                      onClick={() => handleSelect(item.membershipId)}
-                    >
-                      {item.membershipId}
-                    </div>
-                    <div
-                      className="a-user-status"
-                      onClick={() => handleSelect(item.membershipId)}
-                    >
-                      {item.status ? "Active" : "Not-Active"}
-                    </div>
-                    <div
-                      className="a-user-plan"
-                      onClick={() => handleSelect(item.membershipId)}
-                    >
-                      {item.status ? "1-month Plan" : "No-Plan"}
-                    </div>
-                  </>
-                  <div className="del-div" onClick={() => handleDel(item._id)}>
-                    <img src={del} alt="del" className="del" />
-                  </div>
-                </section>
-              );
-            })}
+                  {index + 1}
+                </div>
+                <div
+                  className="a-user-name"
+                  // onClick={() => handleSelect(item.membershipId)}
+                  onClick={()=>handleOpenModal(item._id , item.fullName)}
+                  
+                >
+                  {item.fullName}
+                </div>
+                <div
+                  className="a-user-id"
+                  onClick={() => handleSelect(item.membershipId)}
+                >
+                  {item.membershipId}
+                </div>
+                <div
+                  className="a-user-status"
+                  onClick={() => handleSelect(item.membershipId)}
+                >
+                  {item.status ? "Active" : "Not-Active"}
+                </div>
+                <div
+                  className="a-user-plan"
+                  onClick={() => handleSelect(item.membershipId)}
+                >
+                  {item.plan ? item.plan : "No-Plan"}
+                </div>
+              </>
+              <div className="del-div" onClick={() => handleDel(item._id)}>
+                <MdAutoDelete className="del" />
+              </div>
+              {allMember.Open&&<CreatePlans inactiveId={item._id}  inactiveMembershipId={item.membershipId} inactivefullName={item.fullName}/>}
+            </section>
+          );
+        }
+        )}
+
       </section>
     </main>
   );

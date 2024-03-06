@@ -3,7 +3,8 @@
     height:100%;
    display: flex;
    flex-direction: column;
-   gap:10px
+   gap:10px;
+   position: relative;
 }
 
 
@@ -166,25 +167,21 @@
 }
 
 .del-div{
-    width: 2%;
+    width: 5%;
     height:100%;
     display: flex;
     justify-content: center;
     align-items: center;
     cursor: pointer;
     margin-left: 14%;
-    border: 1px solid gray;
+    /* border: 1px solid gray; */
     border-radius: 2px;
+    /* margin-left: 2px; */
     margin-bottom: 2px;
-    background-color: whitesmoke;
+    /* background-color: whitesmoke; */
     cursor: pointer;
     position: absolute;
     left: 81%;
   
 }
 
-.del{
-    width:60%;
-    height:60%;
-    object-fit: contain;
-}

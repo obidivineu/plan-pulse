@@ -4,7 +4,7 @@ import { Navigate, Outlet } from "react-router-dom";
 
 const Userprivacy = () => {
   //const { token } = useContext(AppContext);
-  const myPass = JSON.parse(localStorage.getItem("pass"));
+  const myPass = localStorage.getItem("pass");
 
   return <>{!myPass ? <Navigate to="/home-screen" /> : <Outlet />}</>;
 };

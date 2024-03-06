@@ -12,6 +12,8 @@ import face from "../../assets/user.png";
 import Loader from "../../components/loader/Loader";
 import { useContext } from "react";
 import { AppContext } from "../../context";
+import { FaCamera } from "react-icons/fa";
+
 
 const schema = yup.object().shape({
   email: yup.string().required("please fill up the email field"),
@@ -145,13 +147,13 @@ const UserSignup = () => {
           </section>
           <form className="right-sec" onSubmit={handleSubmit(overSubmit)}>
             <header className="signup-logo-div2">
-              <img src={logo} alt="logo" className="signup-logo2" />
+              <FaCamera />
             </header>
 
             <div className="profile-div" onClick={handleAllClick}>
               <div className="face">
                 {!isPhoto ? (
-                  <img src={face} alt="photo" className="default-photo" />
+                  <FaCamera  className="default-photo" />
                 ) : (
                   <img src={data.photo} alt="fot" className="real-photo" />
                 )}

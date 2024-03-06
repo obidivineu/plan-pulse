@@ -6,7 +6,7 @@ import { AppContext } from "../../context";
 import groupW from "../../assets/gw.png";
 
 const Dashboard = () => {
-  const { cardDatas, setAddMember } = useContext(AppContext);
+  const { cardDatas, setAddMember,allMember } = useContext(AppContext);
   const [addTog, setAddTog] = useState(false);
 
   useEffect(() => {
@@ -37,16 +37,10 @@ const Dashboard = () => {
         />
       </div>
       <div className="dashboard-content">
-        {cardDatas.map((item) => {
-          return (
             <Carddashboard
-              key={item.id}
-              status={item.status}
-              number={5}
-              icon={groupW}
+              
             />
-          );
-        })}
+            
       </div>
     </main>
   );

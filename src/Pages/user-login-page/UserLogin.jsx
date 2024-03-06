@@ -56,10 +56,12 @@ const UserLogin = () => {
       setToken(response.data.token);
       setChangeSigninBtn(false);
       navigate("/user-dashboard");
-      localStorage.setItem("pass", JSON.stringify(response.data.token));
+      localStorage.setItem("pass",response.data.token);
+      localStorage.setItem("userDatas", JSON.stringify(response.data.data));
+      console.log(response.data.data)
     } catch (error) {
-      console.log(error.message);
-      setErrorMsg(error.message);
+      console.log(error);
+      setErrorMsg(error.response.data.message);
       setChangeSigninBtn(false);
       navigate("/erroLogin");
     }

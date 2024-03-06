@@ -1,6 +1,5 @@
 import "./menu.css";
 import Category from "../category/Category";
-import LightandDark from "../../components/lightdark/LightandDark";
 import Logout from "../logout/Logout";
 import logout from "../../assets/logout.png";
 import logoutC from "../../assets/logout-color.png";
@@ -57,7 +56,7 @@ const Menu = () => {
     <main className="menu-container">
       <section className="menu-company-logo">
         <img
-          src={userData.profilePicture}
+          src={userData?.profilePicture}
           alt="logo"
           className="menu-company-logo-img"
         />
@@ -81,9 +80,6 @@ const Menu = () => {
             </div>
           );
         })}
-      </section>
-      <section className="menu-light-dark">
-        <LightandDark />
       </section>
       <section className="menu-logout" onClick={handleLogout}>
         <Logout text="Logout" logout={!isLogOut ? logout : logoutC} />

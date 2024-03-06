@@ -2,13 +2,15 @@ import "./createplan.css";
 import { useContext, useRef } from "react";
 import { AppContext } from "../../context";
 import axios from "axios";
+import { useEffect } from "react";
 
-const CreatePlan = () => {
-  const { setToCreatePlan, token, theClientSelectedId } =
+const CreatePlan = (props) => {
+  const { setToCreatePlan, token, theClientSelectedId, modalId, setmodalId, fullName, setfullName } =
     useContext(AppContext);
   const nameRef = useRef(null);
   const planRef = useRef(null);
-
+  console.log(fullName)
+  console.log(modalId)
   const handleExit = () => {
     setToCreatePlan(false);
   };
@@ -33,29 +35,50 @@ const CreatePlan = () => {
       console.log(error.message);
     }
   };
+
+
+
+  const getOne=async ()=>{
+    try{
+      const response = await axios.get("https://planpulse.onrender.com/getOneMember/:id");
+      console.log(response.data)
+
+    }catch(error){
+      console.error(error)
+    }
+  }
+  useEffect(()=>{
+
+  },[])
+  
   return (
     <main className="create">
       <div className="creatememberbox">
         <div className="logodelete" onClick={handleExit}>
           X
         </div>
-        <form className="inputs" onClick={handleSub}>
-          <input
-            type="text"
-            placeholder="User-Id"
-            ref={nameRef}
-            value={theClientSelectedId}
-            onChange={(e) => console.log(e.target.value)}
-          />
-          <select type="text" ref={planRef} className="selec">
-            <option value="">Choose Plan</option>
-            <option value="one month plan">1-Month-Plan</option>
-            <option value="two month plan">2-Month-Plan</option>
-            <option value="three month plan">3-Month-Plan</option>
-          </select>
-          <button type="submit">Subscribe</button>
-        </form>
+        <div>
+
+
+          <div className='include'>
+            <div className='cancelling'>
+            </div>
+            <div className='planadd'>Full Name:<div className="user">{props.inactivefullName}</div></div>
+            <div className='planadd'> Membership-id: <div className="user">{modalId}</div></div>
+          </div>
+          <div className="mid">
+            <select type="text" ref={planRef} className="selec">
+              <option value="">Choose Plan</option>
+              <option value="one month plan">1Month</option>
+              <option value="two month plan">2Month</option>
+              <option value="three month plan">3Month</option>
+            </select>
+            <button className='clickon'>Subscribe</button>
+          </div>
+        </div>
       </div>
+
+
     </main>
   );
 };
