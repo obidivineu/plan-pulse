@@ -2,6 +2,8 @@ import "../creatememember/createmember.css";
 import { useContext, useRef, useState } from "react";
 import { AppContext } from "../../context";
 import axios from "axios";
+import { SpinnerCircular } from "spinners-react";
+import Swal from 'sweetalert2'
 
 
 const Createmember = () => {
@@ -42,10 +44,44 @@ const Createmember = () => {
         }
       );
       console.log(response);
-      setLoading(false)
+      setLoading(true)
+      Swal.fire({
+        title: "Member Successfully Added",
+        text: response?.data?.message,
+        icon: "success",
+        confirmButtonText: "okay",
+        timer: "5000",
+        showConfirmButton: false
+      })
+
       
     } catch (error) {
       console.log(error);
+      if (error.code === "ERR_NETWORK") {
+        Swal.fire({
+          title: "Added Member Failed",
+          text: error?.message,
+          icon: "error",
+          confirmButtonText: "okay",
+          timer: "5000",
+          showConfirmButton: false
+        })
+       
+
+      }
+      else {
+        Swal.fire({
+          title: "Added Member Failed",
+          text: error?.response?.data?.message,
+          icon: "error",
+          confirmButtonText: "okay",
+          timer: "5000",
+          showConfirmButton: false
+        })
+      }
+    }
+    finally{
+      setLoading(false)
     }
   };
   
@@ -78,7 +114,11 @@ const Createmember = () => {
       
         
           <button type="submit">
-           ADD
+          {loading ? <SpinnerCircular
+              size={30}
+              thickness={99}
+              speed={100}
+            /> : 'ADD'}
           </button>
         </form>
 
