@@ -5,9 +5,10 @@ import * as yup from "yup";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import axios from "axios";
-import Loader from "../../components/loader/Loader";
+import Swal from 'sweetalert2'
 import { useState, useContext } from "react";
 import { AppContext } from "../../context";
+import { SpinnerCircular } from "spinners-react";
 
 const schema = yup.object().shape({
   email: yup.string().required("please fill up the email field"),
@@ -19,6 +20,7 @@ const schema = yup.object().shape({
 });
 
 const UserLogin = () => {
+  const [loading, setLoading] = useState(false)
   const navigate = useNavigate();
   const [changeSigninBtn, setChangeSigninBtn] = useState(false);
   const { setErrorMsg, setToken } = useContext(AppContext);
@@ -40,6 +42,7 @@ const UserLogin = () => {
 
     // formdata.append("email", data.email);
     // formdata.append("password", data.password);
+    setLoading(true)
 
     const mainData = {
       email: data.email,
@@ -53,23 +56,58 @@ const UserLogin = () => {
     try {
       const response = await axios.post(url, mainData);
       console.log(response.data.token);
+      Swal.fire({
+        title: "Login Successful",
+        text: response?.data?.message,
+        icon: "success",
+        confirmButtonText: "okay",
+        timer: "3000",
+        showConfirmButton: false
+      })
       setToken(response.data.token);
       setChangeSigninBtn(false);
+
       navigate("/user-dashboard");
       localStorage.setItem("pass",response.data.token);
       localStorage.setItem("userDatas", JSON.stringify(response.data.data));
       console.log(response.data.data)
+
     } catch (error) {
       console.log(error);
+
+      if (error.code === "ERR_NETWORK") {
+          Swal.fire({
+            title: "Login Failed",
+            text: error?.message,
+            icon: "error",
+            confirmButtonText: "okay",
+            timer: "2000",
+            showConfirmButton: false
+          })
+          setLoading(false)
+
+        }
+        else {
+          Swal.fire({
+            title: "Login Failed",
+            text: error?.response?.data?.message,
+            icon: "error",
+            confirmButtonText: "okay",
+            timer: "2000",
+            showConfirmButton: false
+          })
+          setLoading(false)
+        }
+
       setErrorMsg(error.response.data.message);
       setChangeSigninBtn(false);
-      navigate("/erroLogin");
+      // navigate("/erroLogin");
     }
   };
 
   return (
     <div className="loginbodypage">
-      {!changeSigninBtn ? (
+      {/* {!changeSigninBtn ? ( */}
         <section className="loginbodypage-section">
           <div className="loginpage">
             <img
@@ -131,7 +169,11 @@ const UserLogin = () => {
                   }
                   type="submit"
                 >
-                  LOGIN
+                           {loading ? <SpinnerCircular
+            size={30}
+            thickness={99}
+            speed={100}
+          /> : 'LOGIN'}
                 </button>
               </center>
             </form>
@@ -154,9 +196,9 @@ const UserLogin = () => {
             </span>
           </div>
         </section>
-      ) : (
+      {/* ) : (
         <Loader />
-      )}
+      )} */}
     </div>
   );
 };
