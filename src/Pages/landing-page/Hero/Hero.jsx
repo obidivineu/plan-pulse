@@ -2,8 +2,7 @@ import React from 'react';
 import hero from "../../../assets/database.svg"
 import "./Hero.css"
 import { useNavigate } from 'react-router-dom';
-
-
+import { payKorapay } from '../../../payment';
 const Hero = () => {
 
   const nav = useNavigate()
@@ -31,7 +30,7 @@ const Hero = () => {
           >GET STARTED</button>
           <button className="upgrading"  style={{
             fontSize: "15px",
-          }}>UPGRADE</button>
+          }} onClick={payKorapay}>UPGRADE</button>
         </div>
       </div>
       <div className="heroimage">
