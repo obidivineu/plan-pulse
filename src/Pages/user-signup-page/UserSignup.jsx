@@ -106,7 +106,7 @@ const UserSignup = () => {
       console.log(error.message);
       if (error.code === "ERR_NETWORK") {
         Swal.fire({
-          title: "SignUp Failed",
+          title: "Login Failed",
           text: error?.message,
           icon: "error",
           confirmButtonText: "okay",
@@ -228,7 +228,7 @@ const UserSignup = () => {
             <p className="signup-error-message">{errors.email?.message}</p>
           </div>
           <div className="signup-input-label-div">
-            <label className="signup-label">Phone Number</label>
+            <label className="signup-label"> Number</label>
             <input
               type="text"
               className="signup-input"
