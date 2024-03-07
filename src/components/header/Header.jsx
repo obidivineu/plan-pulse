@@ -20,9 +20,7 @@ const Header = () => {
         <div className="header-board-section">{title}</div>
       </section>
       <section className="right-leader-section">
-        <article className="notifcation-div">
-          <Notification />
-        </article>
+       
         <article className="search-div">
           <Search />
         </article>

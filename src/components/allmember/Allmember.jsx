@@ -159,9 +159,9 @@ const Allmember = () => {
                   {item.plan ? item.plan : "No-Plan"}
                 </div>
               </>
-              <div className="del-div" onClick={() => handleDel(item._id)}>
+              {/* <div className="del-div" onClick={() => handleDel(item._id)}>
                 <MdAutoDelete className="del" />
-              </div>
+              </div> */}
               {allMember.Open && <CreatePlans inactiveId={item._id} inactiveMembershipId={item.membershipId} inactivefullName={item.fullName} />}
             </section>
           );
