@@ -8,11 +8,11 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { useRef, useState, useEffect } from "react";
-import face from "../../assets/user.png";
-import Loader from "../../components/loader/Loader";
 import { useContext } from "react";
 import { AppContext } from "../../context";
 import { FaCamera } from "react-icons/fa";
+import { SpinnerCircular } from "spinners-react";
+import Swal from 'sweetalert2'
 
 
 const schema = yup.object().shape({
@@ -32,6 +32,9 @@ const schema = yup.object().shape({
 });
 
 const UserSignup = () => {
+
+  const [loading, setLoading] = useState(false)
+
   const navigate = useNavigate();
   const inputRef = useRef(null);
   const [data, setData] = useState({
@@ -66,6 +69,8 @@ const UserSignup = () => {
     const url = "https://planpulse.onrender.com/api/v1/sign-up";
     setChangeSigninBtn(true);
 
+    setLoading(true)
+
     const formdata = new FormData();
 
     formdata.append("companyName", data.companyName);
@@ -83,15 +88,49 @@ const UserSignup = () => {
     try {
       const response = await axios.post(url, formdata, config);
       console.log(response.data);
+
+      Swal.fire({
+        title: "SignUp Successful",
+        text: response?.data?.message,
+        icon: "success",
+        confirmButtonText: "okay",
+        timer: "5000",
+        showConfirmButton: false
+      })
+
       navigate("/user-dashboard");
       setChangeSigninBtn(false);
       navigate("/email-validation");
       localStorage.setItem("userDatas", JSON.stringify(response.data.data));
     } catch (error) {
       console.log(error.message);
+      if (error.code === "ERR_NETWORK") {
+        Swal.fire({
+          title: "SignUp Failed",
+          text: error?.message,
+          icon: "error",
+          confirmButtonText: "okay",
+          timer: "5000",
+          showConfirmButton: false
+        })
+        setLoading(false)
+
+      }
+      else {
+        Swal.fire({
+          title: "Login Failed",
+          text: error?.response?.data?.message,
+          icon: "error",
+          confirmButtonText: "okay",
+          timer: "5000",
+          showConfirmButton: false
+        })
+        setLoading(false)
+      }
+
       setChangeSigninBtn(false);
       setErrorMsg(error.message);
-      navigate("/error");
+      // navigate("/error");
     }
     setEmailStore(data.email);
   };
@@ -112,131 +151,135 @@ const UserSignup = () => {
 
   return (
     <main className="signup-container">
-      {!changeSigninBtn ? (
-        <section className="signup-form">
-          <section className="left-sec">
-            <div className="signup-inside-div">
-              <img src={wallpaper} alt="wall" className="signup-wallpaper" />
-            </div>
-            <div className="signup-middle-div"></div>
-            <div className="signup-upper-div">
-              <header className="signup-logo-div">
-                <img src={logo} alt="logo" className="signup-logo" />
-              </header>
-
-              <div className="signup-headertext">
-                Please enter your details to signup and be part of our great
-                community
-              </div>
-              <div className="signup-subtext">
-                Already have an account ?
-                <span
-                  className="signup-subtext-span"
-                  onClick={() => navigate("/user-login")}
-                >
-                  Login
-                </span>
-              </div>
-              <button
-                className={!goBack ? "signup-goback" : "signup-goback-true"}
-                onClick={handleBack}
-              >
-                Go Back
-              </button>
-            </div>
-          </section>
-          <form className="right-sec" onSubmit={handleSubmit(overSubmit)}>
-            <header className="signup-logo-div2">
-              <FaCamera />
+      {/* {!changeSigninBtn ? ( */}
+      <section className="signup-form">
+        <section className="left-sec">
+          <div className="signup-inside-div">
+            <img src={wallpaper} alt="wall" className="signup-wallpaper" />
+          </div>
+          <div className="signup-middle-div"></div>
+          <div className="signup-upper-div">
+            <header className="signup-logo-div">
+              <img src={logo} alt="logo" className="signup-logo" />
             </header>
 
-            <div className="profile-div" onClick={handleAllClick}>
-              <div className="face">
-                {!isPhoto ? (
-                  <FaCamera  className="default-photo" />
-                ) : (
-                  <img src={data.photo} alt="fot" className="real-photo" />
-                )}
-              </div>
-              <input
-                type="file"
-                className="input-file"
-                name="foto"
-                ref={inputRef}
-                onChange={handleChange}
-              />
+            <div className="signup-headertext">
+              Please enter your details to signup and be part of our great
+              community
             </div>
-            <div className="signup-input-label-div">
-              <label className="signup-label">Company Name</label>
-              <input
-                type="text"
-                className="signup-input"
-                placeholder="company name"
-                {...register("companyName")}
-              />
-              <p className="signup-error-message">
-                {errors.companyName?.message}
-              </p>
-            </div>
-            <div className="signup-input-label-div">
-              <label className="signup-label">Email </label>
-              <input
-                type="text"
-                className="signup-input"
-                placeholder="Email"
-                {...register("email")}
-              />
-              <p className="signup-error-message">{errors.email?.message}</p>
-            </div>
-            <div className="signup-input-label-div">
-              <label className="signup-label">Phone Number</label>
-              <input
-                type="text"
-                className="signup-input"
-                placeholder="Phone Number"
-                {...register("phoneNumber")}
-              />
-              <p className="signup-error-message">
-                {errors.phoneNumber?.message}
-              </p>
-            </div>
-            <div className="signup-input-label-div">
-              <label className="signup-label">Password</label>
-              <input
-                type="text"
-                className="signup-input"
-                placeholder="Password"
-                {...register("password")}
-              />
-              <p className="signup-error-message">{errors.password?.message}</p>
-            </div>
-            <div className="signup-input-label-div">
-              <label className="signup-label">Confirm Password</label>
-              <input
-                type="text"
-                className="signup-input"
-                placeholder="Confirm Password"
-                {...register("confirmPassword")}
-              />
-              <p className="signup-error-message">
-                {errors.confirmPassword?.message}
-              </p>
+            <div className="signup-subtext">
+              Already have an account ?
+              <span
+                className="signup-subtext-span"
+                onClick={() => navigate("/user-login")}
+              >
+                Login
+              </span>
             </div>
             <button
-              className={!changeSigninBtn ? "signup-btn" : "signup-btn-true"}
-              type="submit"
+              className={!goBack ? "signup-goback" : "signup-goback-true"}
+              onClick={handleBack}
             >
-              Signup
+              Go Back
             </button>
-            <div className="signup-subtext-down">
-              Already have an account ?
-              <span className="signup-subtext-span-down">Login</span>
-            </div>
-          </form>
+          </div>
         </section>
-      ) : (
+        <form className="right-sec" onSubmit={handleSubmit(overSubmit)}>
+          <header className="signup-logo-div2">
+            <FaCamera />
+          </header>
+
+          <div className="profile-div" onClick={handleAllClick}>
+            <div className="face">
+              {!isPhoto ? (
+                <FaCamera className="default-photo" />
+              ) : (
+                <img src={data.photo} alt="fot" className="real-photo" />
+              )}
+            </div>
+            <input
+              type="file"
+              className="input-file"
+              name="foto"
+              ref={inputRef}
+              onChange={handleChange}
+            />
+          </div>
+          <div className="signup-input-label-div">
+            <label className="signup-label">Company Name</label>
+            <input
+              type="text"
+              className="signup-input"
+              placeholder="company name"
+              {...register("companyName")}
+            />
+            <p className="signup-error-message">
+              {errors.companyName?.message}
+            </p>
+          </div>
+          <div className="signup-input-label-div">
+            <label className="signup-label">Email </label>
+            <input
+              type="text"
+              className="signup-input"
+              placeholder="Email"
+              {...register("email")}
+            />
+            <p className="signup-error-message">{errors.email?.message}</p>
+          </div>
+          <div className="signup-input-label-div">
+            <label className="signup-label">Phone Number</label>
+            <input
+              type="text"
+              className="signup-input"
+              placeholder="Phone Number"
+              {...register("phoneNumber")}
+            />
+            <p className="signup-error-message">
+              {errors.phoneNumber?.message}
+            </p>
+          </div>
+          <div className="signup-input-label-div">
+            <label className="signup-label">Password</label>
+            <input
+              type="text"
+              className="signup-input"
+              placeholder="Password"
+              {...register("password")}
+            />
+            <p className="signup-error-message">{errors.password?.message}</p>
+          </div>
+          <div className="signup-input-label-div">
+            <label className="signup-label">Confirm Password</label>
+            <input
+              type="text"
+              className="signup-input"
+              placeholder="Confirm Password"
+              {...register("confirmPassword")}
+            />
+            <p className="signup-error-message">
+              {errors.confirmPassword?.message}
+            </p>
+          </div>
+          <button
+            className={!changeSigninBtn ? "signup-btn" : "signup-btn-true"}
+            type="submit"
+          >
+            {loading ? <SpinnerCircular
+              size={30}
+              thickness={99}
+              speed={100}
+            /> : 'LOGIN'}
+          </button>
+          <div className="signup-subtext-down">
+            Already have an account ?
+            <span className="signup-subtext-span-down">Login</span>
+          </div>
+        </form>
+      </section>
+      {/* ) : (
         <Loader />
-      )}
+      )} */}
     </main>
   );
 };

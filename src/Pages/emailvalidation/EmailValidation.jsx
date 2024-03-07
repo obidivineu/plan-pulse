@@ -35,7 +35,7 @@ const EmailValidation = () => {
                   {emailStore}
                 </span>{" "}
                 to confirm the validity of our email address. After receiving
-                the email follow the link provided to complete registration
+                the email follow the link provided to complete registration, <span style={{ color: "#FF595E", cursor: "pointer" }}>Please If Not found Check Your Spam</span>
               </p>
             </div>
           </header>

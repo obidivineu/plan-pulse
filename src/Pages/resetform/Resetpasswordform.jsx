@@ -28,7 +28,7 @@ const Resetpasswordform = () => {
             placeholder="Confirm Password"
           />
         </div>
-        <button className="reset-form-btn">Signup</button>
+        <button className="reset-form-btn">reset</button>
       </form>
     </main>
   );
