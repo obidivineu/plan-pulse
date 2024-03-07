@@ -9,6 +9,7 @@ import { MdOutlineModelTraining } from "react-icons/md";
 import { FaSquareXTwitter } from "react-icons/fa6";
 import { FaFacebook } from "react-icons/fa";
 import { IoLogoInstagram } from "react-icons/io5";
+import { payKorapay } from '../../../payment';
 
 const Landingpage = () => {
 
@@ -83,7 +84,7 @@ const Landingpage = () => {
                 <p className="ouroffertext">3 Months Subscription</p>
               </div>
               <div className="accessbtn">
-                <button className="paying">PAY</button>
+                <button className="paying"onClick={payKorapay}>PAY</button>
               </div>
             </div>
           </div>

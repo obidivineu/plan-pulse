@@ -1,0 +1,277 @@
+*{
+    margin: 0%;
+    padding: 0%;
+    box-sizing: border-box;
+}
+.fullscreen{
+    width: 100vw;
+    height: 100vh;
+    /* background-color: ; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+.fullmid{
+width: 45%;
+height: 70%;
+background-color: #fdfdf7;
+display: flex;
+/* justify-content: center; */
+align-items: center;
+flex-direction: column;
+gap: 50px;
+}
+.one{
+    width: 100%;
+    height: 20%;
+    /* background-color:palegoldenrod; */
+    display: flex;
+    
+ 
+    
+}
+.oneright{
+    width: 33%;
+    height: 100%;
+    /* background-color: green; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.oval{
+    width: 5%;
+    height: 10px;
+    background-color: lightgray;
+    border-radius: 50px;
+}
+.pcard{
+    width: 30%;
+    height: 40%;
+    /* background-color: pink; */
+    display: flex;
+    /* justify-content: center; */
+    align-items: center;
+}
+.onemiddle{
+    width: 33%;
+    height: 100%;
+    /* background-color: red; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.vcard{
+    width: 30%;
+    height: 40%;
+    /* background-color: pink; */
+    display: flex;
+    align-items: center;
+}
+.oneleft{
+    width: 35%;
+    height: 100%;
+    /* background-color: yellow; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.acard{
+    width: 30%;
+    height: 40%;
+    /* background-color: pink; */
+    display: flex;
+    align-items: center;
+}
+/* .two{
+    width: 100%;
+    height: 20%;
+
+    display: flex;
+
+}
+.tworight{
+    width: 50%;
+    height: 100%;
+    /* background-color: lavender; */
+    /* display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+.number{
+    background-color: rebeccapurple;
+    width: 40%;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 10px;
+    font-weight: 600;
+} 
+.inputstyle{
+    height: 50%; */
+    /* background-color: green; */
+/* }
+.twoleft{
+    width: 50%;
+    height: 100%;
+    background-color: lightcoral;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+} */
+/* .three{
+    width: 100%;
+    height: 20%;
+
+    display: flex;
+}
+.threeright{
+    width: 50%;
+    height: 100%; */
+    /* background-color: purple; */
+    /* display: flex;
+    align-items: center;
+    justify-content: space-around;          
+}
+.threeleft{
+    width: 50%;
+    height: 100%; */
+    /* background-color: crimson;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+} */
+.four{ 
+    width: 80%;
+    height: 20%;
+    /* background-color: rgb(252, 238, 238); */
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+
+}
+.amount{
+    width: 40%;
+    height: 30px;
+        margin-left: 10px;
+}
+.five{
+    width: 100%;
+    height: 20%;
+    /* background-color: powderblue; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+.confirming{
+    width:  50%;
+    height:  30px;
+    background-color: #FF595E;
+    color: rgb(255, 255, 255);
+    border: none;
+}
+.date{
+    width: 20%;
+    height: 20px;
+    /* background-color: pink; */
+    text-align: center;
+}
+
+
+
+
+    @media screen and (max-width:500px) {
+      .fullmid{
+display: flex;
+flex-direction: column;
+width: 90%;
+height: 90%;
+gap: 30px;
+      }
+    
+}
+    @media screen and (max-width:500px) {
+      .one{
+
+display: flex;
+align-items: center;
+      }
+    
+}
+
+
+    @media screen and (max-width:500px) {
+      .two{
+
+display: flex;
+flex-direction: column;
+gap: 5px;
+      }
+    
+}
+    @media screen and (max-width:500px) {
+      .tworight,.twoleft{
+
+display: flex;
+flex-direction: column;
+align-items: start;
+width: 100%;
+align-items: center;
+justify-content: center;
+}
+
+}
+
+@media screen and (max-width:500px) {
+    .number{
+   font-size: 13px;
+      }
+}
+
+@media screen and (max-width:500px) {
+    .inputstyle{
+height: 100%;
+      }
+}
+
+
+
+
+@media screen and (max-width:500px) {
+    .three,.four{
+
+display: flex;
+flex-direction: column;
+align-items: start;
+width: 100%;
+align-items: center;
+justify-content: center;
+}
+
+}
+
+@media screen and (max-width:500px) {
+    .threeright,.threeleft{
+
+display: flex;
+flex-direction: column;
+align-items: start;
+width: 90%;
+align-items: center;
+justify-content: center;
+}
+
+}
+@media screen and (max-width:500px) {
+    .dateHolder,.number{
+display: flex;
+align-items: center;
+justify-content: center;
+gap: 20px;
+padding-top: 10px;
+}
+
+}
+
+

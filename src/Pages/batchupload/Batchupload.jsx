@@ -96,7 +96,7 @@ const Batchupload = () => {
                 type="text"
                 className="batch-upload-input"
                 placeholder="Name"
-                onChange={(e) => setAddPlan(e.target.value)}
+                onChange={(e) => setName(e.target.value)}
               />
             </div>
             <div className="batch-upload-input-label-div">
@@ -105,7 +105,7 @@ const Batchupload = () => {
                 type="text"
                 className="batch-upload-input"
                 placeholder="Plan"
-                onChange={(e) => setName(e.target.value)}
+                onChange={(e) => setAddPlan(e.target.value)}
               />
             </div>
           </article>
@@ -120,7 +120,7 @@ const Batchupload = () => {
                   type="text"
                   className="batch-upload-input"
                   placeholder="Name"
-                  onChange={(el) => setAddPlan(el.target.value)}
+                  onChange={(el) => setName(el.target.value)}
                 />
               </div>
               <div className="batch-upload-input-label-div">
@@ -129,7 +129,7 @@ const Batchupload = () => {
                   type="text"
                   className="batch-upload-input"
                   placeholder="Plan"
-                  onChange={(el) => setName(el.target.value)}
+                  onChange={(el) => setAddPlan(el.target.value)}
                 />
               </div>
             </article>
