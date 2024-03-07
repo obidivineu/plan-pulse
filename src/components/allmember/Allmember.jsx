@@ -106,7 +106,7 @@ const Allmember = () => {
         <div className="shape-div">
           <img src={shape} alt="shape" className="shape" />
         </div>
-        <div className="word">Delete </div>
+        {/* <div className="word">Delete </div>  */}
       </header>
 
       <div className="allmember-line"></div>
